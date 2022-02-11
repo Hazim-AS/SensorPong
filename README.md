@@ -12,3 +12,14 @@ Hazim :
 - Créer une liaison serie entre la Rasberry et l'arduino qui permettera a La Rasberry :
 	L'envoi en temps réel de la vitesse, fréquence et oscillation 
 	De recuperer les valeurs des differents capteurs et les lires
+
+Requetes BDD :
+
+création de compte :
+connexion de compte :
+
+
+Kylian :
+
+
+Kais :
