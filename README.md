@@ -11,4 +11,4 @@ Hazim :
 - Concevoir une BDD avec les differentes tables et requetes ainsi que les statistiques pour chacun des joueurs
 - Créer une liaison serie entre la Rasberry et l'arduino qui permettera a La Rasberry :
 	L'envoi en temps réel de la vitesse, fréquence et oscillation 
-	De recuperer les valeurs des differents capteurs et leurs lectures 
+	De recuperer les valeurs des differents capteurs et les lires
