@@ -1,7 +1,7 @@
 # SensorPong
 
 - Taux Partie = (Coup Reussi/Coup Total)*100
-- Taux Total = (Taux Total + Taux Partie)/2
+
 
 Taches :
 
@@ -13,10 +13,13 @@ Taches :
 		L'envoi en temps réel de la vitesse, fréquence et oscillation 
 		De recuperer les valeurs des differents capteurs et les lires
 
-	Requetes BDD :
-	- création de compte : INSERT INTO joueur (`Name`, `Password`) VALUES ('Hazim', '123');
-	- connexion au compte : SELECT * FROM joueur WHERE Name = 'Hazim' AND Password = 'Hazim'
-	- 
+		Table BDD :
+		- Compte
+
+		Requetes BDD :
+		- création de compte : INSERT INTO compte (`nom`, `mdp`, `statut`) VALUES ('Hazim', '123', 'Joueur');
+		- connexion au compte : SELECT * FROM compte WHERE nom = 'Hazim' AND mdp = '123'
+		- 
 
 
 	Kylian :
@@ -26,9 +29,17 @@ Taches :
 
 
 Liens : 
+	
+	OFD :
+	- https://www.dsprelated.com/showarticle/1046.php
+	
+	Capteur Infrarouge :
+	- https://www.securitasdirect.fr/mag-securite/systeme-d-alarme/composants/alarme-coeur-du-systeme/quoi-sert-un-detecteur-infrarouge
+	
+	Capteur FSR :
+	- https://www.gotronic.fr/pj2-24574-1381.pdf
+	- https://wiki.mchobby.be/index.php?title=Senseur_FSR
+	- https://www.mataucarre.fr/index.php/2017/05/03/capteur-de-force-fsr02-senseur-fsr-arduino/
 
-- https://www.dsprelated.com/showarticle/1046.php
-- https://www.securitasdirect.fr/mag-securite/systeme-d-alarme/composants/alarme-coeur-du-systeme/quoi-sert-un-detecteur-infrarouge
-- https://www.gotronic.fr/pj2-24574-1381.pdf
-- https://wiki.mchobby.be/index.php?title=Senseur_FSR
-- https://www.mataucarre.fr/index.php/2017/05/03/capteur-de-force-fsr02-senseur-fsr-arduino/
+	CSV :
+	- https://www.youtube.com/watch?v=i-TqNzUryn8&ab_channel=BrianFraser
