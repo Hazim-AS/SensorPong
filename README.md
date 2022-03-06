@@ -7,7 +7,7 @@ Taches :
 
 	Hazim : 
 	- Créer un serveur sur le rasberry permettant de communiquer avec l'appli Android
-	- Créer un client MySQL sur le rasberry permettant de communiquer avec la BDD
+	- Créer un client MySQL permettant de communiquer avec la BDD
 	- Concevoir une BDD avec les differentes tables et requetes ainsi que les statistiques pour chacun des joueurs
 	- Créer une liaison serie entre la Rasberry et l'arduino qui permettera a La Rasberry :
 		L'envoi en temps réel de la vitesse, fréquence et oscillation 
@@ -15,10 +15,12 @@ Taches :
 
 		Table BDD :
 		- Compte
+		- Historique
 
 		Requetes BDD :
 		- création de compte : INSERT INTO compte (`nom`, `mdp`, `statut`) VALUES ('Hazim', '123', 'Joueur');
 		- connexion au compte : SELECT * FROM compte WHERE nom = 'Hazim' AND mdp = '123'
+		- Reglage de la partie : 
 		- 
 
 
