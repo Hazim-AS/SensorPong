@@ -22,8 +22,12 @@ Taches :
 		- création de compte : INSERT INTO compte (`nom`, `mdp`, `statut`) VALUES ('Hazim', '123', 'Joueur');
 		- connexion au compte : SELECT nom,mdp FROM compte WHERE nom = 'Hazim' AND mdp = '1234'
 		- Reglage de la partie : 
-		- 
-
+		- Historique complet des Joueurs:
+		- Historique complet d'un Joueur :
+		- Historique des 10 dernieres partie d'un Joueur :
+		- Historique des 10 dernieres partie d'un Joueur en fonction la vitesse:
+		- Historique :
+		- Historique :
 
 	Kylian :
 
