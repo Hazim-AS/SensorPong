@@ -28,6 +28,8 @@ Taches :
 		- Historique complet d'un Joueur : SELECT * FROM sensorpong.compte INNER JOIN sensorpong.historique on compte.idcompte = historique.Compte_idcompte where nom = 'Antoine';
 		- Historique des 10 dernieres partie d'un Joueur :
 		- Historique des 10 dernieres partie d'un Joueur en fonction de la configuration :
+		- Effacer un compte et tout ces réglages :
+
 
 	Kylian :
 
