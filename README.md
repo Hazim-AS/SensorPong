@@ -16,10 +16,11 @@ Taches :
 		Table BDD :
 		- Compte
 		- Historique
+		- Reglage
 
 		Requetes BDD :
 		- création de compte : INSERT INTO compte (`nom`, `mdp`, `statut`) VALUES ('Hazim', '123', 'Joueur');
-		- connexion au compte : SELECT * FROM compte WHERE nom = 'Hazim' AND mdp = '123'
+		- connexion au compte : SELECT nom,mdp FROM compte WHERE nom = 'Hazim' AND mdp = '1234'
 		- Reglage de la partie : 
 		- 
 
