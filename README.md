@@ -19,13 +19,13 @@ Taches :
 		- Reglage
 
 		Requetes BDD :
-		- création de compte : INSERT INTO compte (`nom`, `mdp`, `statut`) VALUES ('Hazim', '1234', 'Admin');
-		- connexion au compte : SELECT nom,mdp FROM compte WHERE nom = 'Hazim' AND mdp = '1234'
+		- création de compte : INSERT INTO sensorpong.compte (`nom`, `mdp`, `statut`) VALUES ('Hazim', '1234', 'Admin');
+		- connexion au compte : SELECT * FROM sensorpong.compte WHERE nom = 'Hazim' AND mdp = '1234'
 		- Reglage de la partie : 
-		- Historique complet des Joueurs:
+		- Historique complet des Joueurs: SELECT * FROM sensorpong.historique;
 		- Historique complet d'un Joueur :
 		- Historique des 10 dernieres partie d'un Joueur :
-		- Historique des 10 dernieres partie d'un Joueur en fonction la vitesse:
+		- Historique des 10 dernieres partie d'un Joueur en fonction de la zone de retour :
 		- Historique :
 		- Historique :
 
