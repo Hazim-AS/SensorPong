@@ -31,17 +31,20 @@ Taches :
 
 
 Liens : 
+
+	Physique :
 	
-	OFD :
-	- https://www.dsprelated.com/showarticle/1046.php
+		OFD :
+		- https://www.dsprelated.com/showarticle/1046.php
 	
-	Capteur Infrarouge :
-	- https://www.securitasdirect.fr/mag-securite/systeme-d-alarme/composants/alarme-coeur-du-systeme/quoi-sert-un-detecteur-infrarouge
+		Capteur Infrarouge :
+		- https://www.securitasdirect.fr/mag-securite/systeme-d-alarme/composants/alarme-coeur-du-systeme/quoi-sert-un-detecteur-infrarouge
+		- https://www.verisure.fr/guide-securite/systeme-d-alarme/composants-alarme/detecteur-de-mouvement/fonctionnement-capteur-infrarouge
 	
-	Capteur FSR :
-	- https://www.gotronic.fr/pj2-24574-1381.pdf
-	- https://wiki.mchobby.be/index.php?title=Senseur_FSR
-	- https://www.mataucarre.fr/index.php/2017/05/03/capteur-de-force-fsr02-senseur-fsr-arduino/
+		Capteur FSR :
+		- https://www.gotronic.fr/pj2-24574-1381.pdf
+		- https://wiki.mchobby.be/index.php?title=Senseur_FSR
+		- https://www.mataucarre.fr/index.php/2017/05/03/capteur-de-force-fsr02-senseur-fsr-arduino/
 
 	CSV :
 	- https://www.youtube.com/watch?v=i-TqNzUryn8&ab_channel=BrianFraser
