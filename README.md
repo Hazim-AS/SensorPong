@@ -2,7 +2,6 @@
 
 - Taux Partie = (Coup Reussi/Coup Total)*100
 
-
 Taches :
 
 	Hazim : 
@@ -23,11 +22,9 @@ Taches :
 		- connexion au compte : SELECT * FROM sensorpong.compte WHERE nom = 'Hazim' AND mdp = '1234'
 		- Enregistrer reglage de la partie d'un Joueur : 
 		- Historique complet des Joueurs: SELECT * FROM sensorpong.historique;
-		- Historique complet d'un Joueur :
+		- Historique complet d'un Joueur : 
 		- Historique des 10 dernieres partie d'un Joueur :
 		- Historique des 10 dernieres partie d'un Joueur en fonction de la configuration :
-		- Historique :
-		- Historique :
 
 	Kylian :
 
