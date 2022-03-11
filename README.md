@@ -14,18 +14,17 @@ Taches :
 
 		Table BDD :
 		- Compte
-		- Historique
+		- Partie
 		- Reglage
 
 		Requetes BDD :
 		- création de compte : INSERT INTO sensorpong.compte (`nom`, `mdp`, `statut`) VALUES ('Hazim', '1234', 'Admin');
 		- connexion au compte : SELECT * FROM sensorpong.compte WHERE nom = 'Hazim' AND mdp = '1234'
-		- Enregistrer dans l'historique la partie d'un joueur : 
 		- Enregistrer les reglages d'une partie d'un joueur : 
 		- Modifier les reglages de la partie d'un Joueur : UPDATE sensorpong.reglage INNER JOIN sensorpong.compte ON Compte_idcompte = compte.idcompte SET balle = '3', Fréquence = '7', Vitesse = '8', zone_envoie = '1-2', zone_retour = '5-6' WHERE compte.nom = 'Antoine'
 		- Enregistrer la partie d'un joueur apres la fin de la partie : 
-		- Historique complet des Joueurs: SELECT * FROM sensorpong.historique;
-		- Historique complet d'un Joueur : SELECT * FROM sensorpong.compte INNER JOIN sensorpong.historique on compte.idcompte = historique.Compte_idcompte where nom = 'Antoine';
+		- Historique complet des Joueurs: SELECT * FROM sensorpong.partie;
+		- Historique complet d'un Joueur : SELECT * FROM sensorpong.compte INNER JOIN sensorpong.partie on compte.idcompte = partie.Compte_idcompte where nom = 'Antoine';
 		- Historique des 10 dernieres partie d'un Joueur :
 		- Historique des 10 dernieres partie d'un Joueur en fonction de la configuration :
 		- Effacer un compte et tout ces réglages :
