@@ -12,12 +12,14 @@ int CIP = 0;
 
 
 void interuptFSR(){
-  //fsrReading = analogRead(fsrAnalogPin);
+  
   Serial.print("Touche a = ");
   Serial.println(fsrReading);
   digitalWrite(LEDpin2,HIGH); 
-//  nbrTouche = nbrTouche+1;
-//  Serial.println(nbrTouche);   
+  nbrTouche = nbrTouche+1;
+  Serial.println(nbrTouche);
+  delay(1000);
+  digitalWrite(LEDpin2,LOW);  
 }
 
 
@@ -29,11 +31,15 @@ void setup(void) {
   //pinMode(fsrAnalogPin,INPUT);
   pinMode(infraPin,INPUT);
   pinMode(fsrDigitalPin, INPUT_PULLUP);
-  attachInterrupt(digitalPinToInterrupt(fsrDigitalPin), interuptFSR, FALLING);
+  attachInterrupt(digitalPinToInterrupt(fsrDigitalPin), interuptFSR, RISING);
 }
  
 void loop(void) {
 
+
+//fsrReading = analogRead(fsrAnalogPin);
+fsrReading = digitalRead(fsrAnalogPin);
+Serial.println(fsrReading);
  /*
 
   while(nbrBalle !=10){
