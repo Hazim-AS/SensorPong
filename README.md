@@ -21,12 +21,11 @@ Taches :
 		Requetes BDD :
 		- création d'un Joueur : INSERT INTO sensorpong.joueur (email,nom,prenom,mdp,Entraineur_idEntraineur) VALUES ('francis@gmail.com','dupont','francis','lo87',1); 
 		- connexion au compte : SELECT * FROM sensorpong.joueur INNER JOIN sensorpong.entraineur WHERE joueur.email='kylian.alger-leonard@lycee-jeanrostand.fr' && joueur.mdp='1478';
-		- Modifier la partie d'un Joueur :
-		- Enregistrer la partie d'un joueur apres la fin de la partie : 
-		- Historique complet des Joueurs:
-		- Historique complet d'un Joueur : 		
-		- Historique des 10 dernieres partie d'un Joueur en fonction de la configuration :
-		- Effacer un compte et tout ces réglages :
+		- Enregistrer la partie d'un joueur apres la fin de la partie : INSERT INTO
+		- Historique complet des Joueurs: SELECT
+		- Historique complet d'un Joueur : SELECT
+		- Historique des 10 dernieres partie d'un Joueur en fonction de la configuration : SELECT
+		- Effacer un compte et tout ces réglages : DELETE
 
 
 	Kylian :
