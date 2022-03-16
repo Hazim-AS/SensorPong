@@ -16,16 +16,48 @@ Taches :
 		- Entraineur
 		- Joueur
 		- Partie
-		- Joueur_has_Partie
 
-		Requetes BDD :
-		- création d'un Joueur : INSERT INTO sensorpong.joueur (email,nom,prenom,mdp,Entraineur_idEntraineur) VALUES ('francis@gmail.com','dupont','francis','lo87',1); 
-		- connexion au compte : SELECT * FROM sensorpong.joueur INNER JOIN sensorpong.entraineur WHERE joueur.email='kylian.alger-leonard@lycee-jeanrostand.fr' && joueur.mdp='1478';
-		- Enregistrer la partie d'un joueur apres la fin de la partie : INSERT INTO
-		- Historique complet des Joueurs: SELECT
-		- Historique complet d'un Joueur : SELECT
-		- Historique des 10 dernieres partie d'un Joueur en fonction de la configuration : SELECT
-		- Effacer un compte et tout ces réglages : DELETE
+- création d'un Joueur : 
+INSERT INTO sensorpong.joueur (email,nom,prenom,mdp,Entraineur_idEntraineur) 
+VALUES ('francis@gmail.com','dupont','francis','lo87',1);
+
+- connexion au compte de l'entraineur :
+SELECT * 
+FROM sensorpong.entraineur 
+WHERE email='ahmedsalih.hazim@gmail.com' && mdp='1234';
+
+- connexion au compte du joueur: 
+SELECT * 
+FROM sensorpong.joueur 
+WHERE email='kylian.alger-leonard@lycee-jeanrostand.fr' AND mdp='1478';
+
+- Recuperer vitesse et fréquence des balles de la derniere partie : 
+SELECT frequence,vitesse,MAX(Date) 
+FROM sensorpong.joueur INNER JOIN sensorpong.partie 
+WHERE Joueur_idJoueur = idJoueur AND nom='Beddar' AND prenom='Kais';
+
+- Enregistrer la partie d'un joueur apres la fin de la partie : 
+INSERT INTO sensorpong.partie(nbrBalle,frequence,vitesse,zone_envoie,zone_retour,taux_de_reussite,Date,Joueur_idJoueur,Entraineur_idEntraineur)
+VALUES(10,5,2,'1-2','',50,'2022-03-16 17:30:54',1,1) 
+
+- Historique complet des Joueurs: 
+SELECT nom, prenom, nbrBalle, frequence, vitesse, zone_envoie, zone_retour, taux_de_reussite, Date 
+FROM sensorpong.joueur INNER JOIN sensorpong.partie 
+WHERE Joueur_idJoueur = idJoueur ORDER BY Date DESC;
+
+- Historique complet d'un Joueur : 
+SELECT nom, prenom, nbrBalle, frequence, vitesse, zone_envoie, zone_retour, taux_de_reussite, Date 
+FROM sensorpong.joueur INNER JOIN sensorpong.partie
+WHERE Joueur_idJoueur = idJoueur && nom='Alger' && prenom='Kylian' ORDER BY Date DESC;
+
+- Historique des 10 dernieres partie d'un Joueur en fonction de la configuration : SELECT nom, prenom, nbrBalle, frequence, vitesse, zone_envoie, zone_retour, taux_de_reussite, Date 
+FROM sensorpong.joueur 
+INNER JOIN sensorpong.partie WHERE Joueur_idJoueur = idJoueur AND nom='Alger' AND prenom='Kylian' AND nbrBalle >= 0 AND nbrBalle <= 50 AND frequence>=4 AND frequence<=4 AND vitesse>=0 AND vitesse<=10 AND zone_envoie LIKE '%3%' AND zone_retour LIKE '%7%' AND taux_de_reussite >= 0 AND taux_de_reussite <= 100 
+ORDER BY Date DESC LIMIT 10;
+
+- Effacer un compte et tout ces réglages : 
+DELETE * 
+
 
 
 	Kylian :
