@@ -55,8 +55,11 @@ FROM sensorpong.joueur
 INNER JOIN sensorpong.partie WHERE Joueur_idJoueur = idJoueur AND nom='Alger' AND prenom='Kylian' AND nbrBalle >= 0 AND nbrBalle <= 50 AND frequence>=4 AND frequence<=4 AND vitesse>=0 AND vitesse<=10 AND zone_envoie LIKE '%3%' AND zone_retour LIKE '%7%' AND taux_de_reussite >= 0 AND taux_de_reussite <= 100 
 ORDER BY Date DESC LIMIT 10;
 
-- Effacer un compte et tout ces réglages : 
-DELETE * 
+- Effacer un joueur : 
+DELETE FROM sensorpong.joueur WHERE idJoueur=3;
+
+-Effacer les parties du joueurs :
+DELETE FROM sensorpong.partie WHERE Joueur_idJoueur=3;
 
 
 
