@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">SensorPong</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="string_username" />
+    <string name="login">LOGIN</string>
+</resources>
