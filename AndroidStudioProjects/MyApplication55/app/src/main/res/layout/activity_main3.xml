@@ -3,49 +3,40 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent" >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="109dp">
+        android:orientation="vertical">
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/username3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="username"
+            android:inputType="textPersonName"
+            android:textColorHint="#757575"
             android:autofillHints=""
-            android:ems="10"
-            android:importantForAutofill="no"
-            android:inputType="textPersonName"
-            android:text="@string/string_username"
-            tools:ignore="SpeakableTextPresentCheck" />
+            android:importantForAutofill="no" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName2"
+            android:id="@+id/Password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName"
+            android:hint="Password"
+            android:inputType="textPassword"
             android:minHeight="48dp"
-            android:text="@string/password"
-            android:importantForAutofill="no"
-            android:autofillHints="" />
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <Button
             android:id="@+id/button2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/login"
-            android:textColorHighlight="#FF5722"
-            android:textColorHint="#FF5722"
-            android:textColorLink="#FF5722"
-            app:iconTint="#FF5722"
-            tools:ignore="SpeakableTextPresentCheck" />
-
+            android:background="@color/orange"
+            android:text="LOGIN" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

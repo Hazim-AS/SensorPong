@@ -6,4 +6,33 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity2">
 
+    <EditText
+        android:id="@+id/editTextTextPersonName3"
+        android:layout_width="409dp"
+        android:layout_height="51dp"
+        android:ems="10"
+        android:hint="Prenom"
+        android:inputType="textPersonName"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="22dp" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName4"
+        android:layout_width="408dp"
+        android:layout_height="44dp"
+        android:ems="10"
+        android:hint="Nom"
+        android:inputType="textPersonName"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="100dp" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName5"
+        android:layout_width="408dp"
+        android:layout_height="47dp"
+        android:ems="10"
+        android:hint="Date de naissance"
+        android:inputType="textPersonName"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="172dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
