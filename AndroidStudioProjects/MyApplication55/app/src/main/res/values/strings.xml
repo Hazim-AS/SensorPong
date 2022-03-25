@@ -4,4 +4,7 @@
     <string name="password">Password</string>
     <string name="string_username" />
     <string name="login">LOGIN</string>
+    <string name="password1">password</string>
+    <string name="string_password1" />
+    <string name="username1">username</string>
 </resources>
