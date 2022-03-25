@@ -1,0 +1,11 @@
+﻿  main.cpp
+G:\Travail\GitHub\SensorPong\Serveur TCP-IP\BarebonesServer\main.cpp(15,3): error C2065: 'cerr' : identificateur non déclaré
+G:\Travail\GitHub\SensorPong\Serveur TCP-IP\BarebonesServer\main.cpp(15,52): error C2065: 'endl' : identificateur non déclaré
+G:\Travail\GitHub\SensorPong\Serveur TCP-IP\BarebonesServer\main.cpp(16,3): error C2561: 'main' : la fonction doit retourner une valeur
+G:\Travail\GitHub\SensorPong\Serveur TCP-IP\BarebonesServer\main.cpp(6): message : voir la déclaration de 'main'
+G:\Travail\GitHub\SensorPong\Serveur TCP-IP\BarebonesServer\main.cpp(21,19): error C2065: 'INVALIDE_SOCKET' : identificateur non déclaré
+G:\Travail\GitHub\SensorPong\Serveur TCP-IP\BarebonesServer\main.cpp(23,3): error C2065: 'cerr' : identificateur non déclaré
+G:\Travail\GitHub\SensorPong\Serveur TCP-IP\BarebonesServer\main.cpp(23,49): error C2065: 'endl' : identificateur non déclaré
+G:\Travail\GitHub\SensorPong\Serveur TCP-IP\BarebonesServer\main.cpp(24,3): error C2561: 'main' : la fonction doit retourner une valeur
+G:\Travail\GitHub\SensorPong\Serveur TCP-IP\BarebonesServer\main.cpp(6): message : voir la déclaration de 'main'
+G:\Travail\GitHub\SensorPong\Serveur TCP-IP\BarebonesServer\main.cpp(42,63): error C2065: 'clientSize' : identificateur non déclaré

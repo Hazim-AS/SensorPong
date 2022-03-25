@@ -1,0 +1,3 @@
+﻿  main.cpp
+G:\Travail\GitHub\SensorPong\Serveur TCP-IP\BarebonesServer\main.cpp(8,13): warning C4326: le type de retour de 'main' doit être 'int' au lieu de 'void'
+  BarebonesServer.vcxproj -> G:\Travail\GitHub\SensorPong\Serveur TCP-IP\BarebonesServer\Debug\BarebonesServer.exe
