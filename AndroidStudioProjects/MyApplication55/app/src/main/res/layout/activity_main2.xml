@@ -15,24 +15,30 @@
         android:inputType="textPersonName"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="22dp" />
+        tools:layout_editor_absoluteX="-9dp" />
 
-    <EditText
-        android:id="@+id/editTextTextPersonName4"
-        android:layout_width="408dp"
-        android:layout_height="44dp"
-        android:ems="10"
-        android:hint="Nom"
-        android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="100dp" />
+    <Button
+        android:id="@+id/historique"
+        android:layout_width="186dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="214dp"
+        android:text="Historique"
+        app:layout_constraintStart_toStartOf="@+id/profil"
+        tools:layout_editor_absoluteY="103dp" />
 
-    <EditText
-        android:id="@+id/editTextTextPersonName5"
-        android:layout_width="408dp"
-        android:layout_height="47dp"
-        android:ems="10"
-        android:hint="Date de naissance"
-        android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="172dp" />
+    <Button
+        android:id="@+id/profil"
+        android:layout_width="203dp"
+        android:layout_height="60dp"
+        android:text="profil"
+        tools:layout_editor_absoluteX="-24dp"
+        tools:layout_editor_absoluteY="99dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="163dp"
+        tools:layout_editor_absoluteY="295dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

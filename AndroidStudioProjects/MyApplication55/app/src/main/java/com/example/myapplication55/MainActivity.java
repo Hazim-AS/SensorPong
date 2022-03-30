@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
        username = findViewById(R.id.username3);
        password = findViewById(R.id.Password);
-       btnLogin = findViewById(R.id.button2);
+       btnLogin = findViewById(R.id.login);
        String correct_username = "admin";
        String correct_password = "kais";
         //final Button button=(Button)findViewById(R.id.button2);
@@ -33,8 +33,10 @@ public class MainActivity extends AppCompatActivity {
                                             if (username.getText().length() >0 && password.getText().length() > 0) {
                                                 //String toastMessage = "Username: " + email.getText().toString() + ", Password: " + mdp.getText().toString();
                                                 // Toast.makeText(getApplicationContext(), toastMessage, Toast.LENGTH_SHORT).show();
-                                                Intent valider = new Intent(MainActivity.this, MainActivity2.class);
+                                                Intent valider = new Intent(MainActivity.this
+                                                        , MainActivity2.class);
                                                 startActivity(valider);
+
 
                                             }
 
