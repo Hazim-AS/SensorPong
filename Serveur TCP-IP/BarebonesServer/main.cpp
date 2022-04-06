@@ -1,5 +1,7 @@
 #include <iostream>
+#include <cstring>
 #include <WS2tcpip.h>
+#include <mysql.h>
 
 #pragma comment (lib, "ws2_32.lib")
 
@@ -12,6 +14,13 @@ void main() {
 	WORD ver = MAKEWORD(2, 2);
 
 	int wsOk = WSAStartup(ver, &wsData);
+
+	MYSQL* conn;
+	MYSQL_ROW row;
+	MYSQL_RES* res;
+	conn = mysql_init(0);
+
+	conn = mysql_real_connect(conn, "localhost", "root", "root", "sensorpong", 3306, NULL, 0);
 
 	if (wsOk != 0) {
 		cerr << "Can't Initialize winsock ! Quitting" << endl;
@@ -46,8 +55,8 @@ void main() {
 	char host[NI_MAXHOST];		//Client's remote name
 	char service[NI_MAXSERV];	//Service (i.e. port) the client is connect on
 
-	ZeroMemory(host, NI_MAXHOST); //Same as a memset(host,0,NI_MAXHOST);
-	ZeroMemory(service, NI_MAXSERV);
+	memset(host, 0, NI_MAXHOST); //Same as a 
+	memset(service, 0, NI_MAXSERV);
 
 	if (getnameinfo((sockaddr*)&client, sizeof(client), host, NI_MAXHOST, service, NI_MAXSERV, 0) == 0)
 	{
@@ -70,6 +79,14 @@ void main() {
 
 		//Attendre que le client envoie des données
 		int bytesReceived = recv(clientSocket, buf, 4096, 0);
+
+		/*if (bytesReceived > 0)
+			{
+				cout << "donnees recues : " << buf << endl;
+				//Send the message back to client
+				//printf("données reçues : %s ", buf);
+		}*/
+
 		if (bytesReceived == SOCKET_ERROR)
 		{
 				cerr << "Error in recv(). Quitting" << endl;
@@ -81,10 +98,13 @@ void main() {
 			cout << "Client disconnected " << endl;
 			break;
 		}
-
 		// Echo le message au client
-		send(clientSocket, buf, bytesReceived + 1, 0);
 
+		char message[] = "Historique";
+		
+		if (strcmp(buf, message) == 0) {
+			cout << "GAGNE" << endl;
+		}
 	}
 
 	//supprimer une socket
