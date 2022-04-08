@@ -1,10 +1,12 @@
-﻿  MySqlTest.cpp
-G:\Travail\GitHub\SensorPong\Serveur TCP-IP\MySqlTest\MySqlTest.cpp(14,13): warning C4326: le type de retour de 'main' doit être 'int' au lieu de 'void'
-G:\Travail\GitHub\SensorPong\Serveur TCP-IP\MySqlTest\MySqlTest.cpp(125,117): warning C4474: 'printf' : trop d'arguments passés pour la chaîne de format
-G:\Travail\GitHub\SensorPong\Serveur TCP-IP\MySqlTest\MySqlTest.cpp(125,117): message : les espaces réservés et leurs paramètres attendent des arguments 5 variadiques, mais des arguments 6 ont été fournis
+﻿D:\Logiciel\VS2022\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(514,5): warning MSB8028: Le répertoire intermédiaire (x64\Release\) contient des fichiers partagés provenant d'un autre projet (MySqlTest.vcxproj). Cela peut entraîner un comportement de nettoyage et de regénération incorrect.
+  Serveur TCP.cpp
+G:\Travail\GitHub\SensorPong\Serveur TCP-IP\Mysqltest\Serveur TCP.cpp(45,13): warning C4326: le type de retour de 'main' doit être 'int' au lieu de 'void'
+G:\Travail\GitHub\SensorPong\Serveur TCP-IP\Mysqltest\Serveur TCP.cpp(157,25): warning C4018: '<' : incompatibilité signed/unsigned
+G:\Travail\GitHub\SensorPong\Serveur TCP-IP\Mysqltest\Serveur TCP.cpp(194,25): warning C4018: '<' : incompatibilité signed/unsigned
   Génération de code en cours
-  1 of 81 functions ( 1.2%) were compiled, the rest were copied from previous compilation.
+  8 of 81 functions ( 9.9%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     0 functions had inline decision re-evaluated but remain unchanged
   Fin de la génération du code
-  MySqlTest.vcxproj -> G:\Travail\GitHub\SensorPong\Serveur TCP-IP\MySqlTest\x64\Release\MySqlTest.exe
+  MySqlTest.vcxproj -> G:\Travail\GitHub\SensorPong\Serveur TCP-IP\Mysqltest\x64\Release\Serveur TCP.exe
+D:\Logiciel\VS2022\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets(5384,5): warning MSB3061: Impossible de supprimer le fichier "G:\Travail\GitHub\SensorPong\Serveur TCP-IP\MySqlTest\x64\Release\MySqlTest.exe". L'accès au chemin d'accès 'G:\Travail\GitHub\SensorPong\Serveur TCP-IP\MySqlTest\x64\Release\MySqlTest.exe' est refusé.
