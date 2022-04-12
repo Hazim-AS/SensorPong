@@ -1,0 +1,13 @@
+﻿  Serveur TCP.cpp
+G:\Travail\GitHub\SensorPong\Serveur TCP-IP\Serveur TCP\Serveur TCP.cpp(54,13): warning C4326: le type de retour de 'main' doit être 'int' au lieu de 'void'
+G:\Travail\GitHub\SensorPong\Serveur TCP-IP\Serveur TCP\Serveur TCP.cpp(177,13): warning C4477: 'printf' : la chaîne de format '%s' nécessite un argument de type 'char *', mais l'argument variadique 2 est de type 'std::string'
+G:\Travail\GitHub\SensorPong\Serveur TCP-IP\Serveur TCP\Serveur TCP.cpp(177,13): warning C4477: 'printf' : la chaîne de format '%s' nécessite un argument de type 'char *', mais l'argument variadique 3 est de type 'std::string'
+G:\Travail\GitHub\SensorPong\Serveur TCP-IP\Serveur TCP\Serveur TCP.cpp(177,13): warning C4477: 'printf' : la chaîne de format '%s' nécessite un argument de type 'char *', mais l'argument variadique 4 est de type 'std::string'
+G:\Travail\GitHub\SensorPong\Serveur TCP-IP\Serveur TCP\Serveur TCP.cpp(177,13): warning C4477: 'printf' : la chaîne de format '%s' nécessite un argument de type 'char *', mais l'argument variadique 5 est de type 'std::string'
+G:\Travail\GitHub\SensorPong\Serveur TCP-IP\Serveur TCP\Serveur TCP.cpp(65,18): warning C4101: 'stmt' : variable locale non référencée
+  Génération de code en cours
+  0 of 137 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  Fin de la génération du code
+  Serveur TCP.vcxproj -> G:\Travail\GitHub\SensorPong\Serveur TCP-IP\Serveur TCP\x64\Release\Serveur TCP.exe

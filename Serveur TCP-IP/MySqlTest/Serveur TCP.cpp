@@ -6,13 +6,17 @@
 #include <WS2tcpip.h>
 #include <mysql.h>
 #include <ctime>
+#include "jdbc/cppconn/prepared_statement.h"
+#include "jdbc/cppconn/driver.h"
+#include "jdbc/cppconn/exception.h"
+
 
 #pragma comment (lib, "ws2_32.lib")
 
 using namespace std;
 int qstate;
 
-/*struct Pongiste {
+struct Pongiste {
 	int idPongiste;
 	char email[256];
 	char nom[256];
@@ -40,7 +44,7 @@ struct Partie {
 	float tauxDeReussite;
 	int Entraineur_idEntraineur;
 	int Pongiste_idPongiste;
-};*/
+};
 
 void main() {
 
@@ -141,10 +145,10 @@ void main() {
 
 			//char message[] = "p";
 
-			if (strcmp(buf, "Pongiste") == 0) {
+			if (strcmp(buf, "Connexion Pongiste") == 0) {
 
 				cout << "Affiche les joueurs" << endl;
-				string query = "SELECT * FROM sensorpong.joueur";
+				string query = "SELECT idJoueur, email, nom, prenom, mdp FROM sensorpong.joueur";
 				const char* q = query.c_str();
 				qstate = mysql_query(conn, q);
 
@@ -160,6 +164,7 @@ void main() {
 							printf("\n");
 
 							char* val = row[i]; //should save it to an char
+
 							//printf("%s", val);
 							send(clientSocket, val, sizeof(val), 0);
 
@@ -178,7 +183,7 @@ void main() {
 
 			}
 
-			if (strcmp(buf, "Partie") == 0) {
+			if (strcmp(buf, "Historique Admin") == 0) {
 
 				cout << "Affiche l'historique des joueurs" << endl;
 				string query = "SELECT nom, prenom, nbrBalle, frequence, vitesse, zone_envoie, zone_retour, taux_de_reussite, Date FROM sensorpong.joueur INNER JOIN sensorpong.partie WHERE Joueur_idJoueur = idJoueur ORDER BY Date DESC";
@@ -193,11 +198,15 @@ void main() {
 						//printf("ID: %s, Email: %s, Nom: %s, Prenom: %s, Password: %s\n", row[0], row[1], row[2], row[3], row[4], row[5]);
 						for (int i = 0; i < mysql_num_fields(res); i++)
 						{
+							printf("%s ", mysql_num_fields(res));
 							printf("%s ", row[i]); //this is printed like it should be.
 							printf("\n");
+							//printf(val);
 
-							char* val = row[i]; //should save it to an char
-							//printf("%s", val);
+							char* val = row[i] + '\n'; //should save it to an char
+							
+							
+							printf("%s ", val);
 							send(clientSocket, val, sizeof(val), 0);
 
 						}
@@ -218,7 +227,6 @@ void main() {
 		}
 		else {
 			puts("Connection to database has failed!");
-
 		}
 	}
 

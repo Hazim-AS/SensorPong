@@ -2,11 +2,12 @@
   Serveur TCP.cpp
 G:\Travail\GitHub\SensorPong\Serveur TCP-IP\Mysqltest\Serveur TCP.cpp(45,13): warning C4326: le type de retour de 'main' doit être 'int' au lieu de 'void'
 G:\Travail\GitHub\SensorPong\Serveur TCP-IP\Mysqltest\Serveur TCP.cpp(157,25): warning C4018: '<' : incompatibilité signed/unsigned
-G:\Travail\GitHub\SensorPong\Serveur TCP-IP\Mysqltest\Serveur TCP.cpp(194,25): warning C4018: '<' : incompatibilité signed/unsigned
+G:\Travail\GitHub\SensorPong\Serveur TCP-IP\Mysqltest\Serveur TCP.cpp(195,25): warning C4018: '<' : incompatibilité signed/unsigned
+G:\Travail\GitHub\SensorPong\Serveur TCP-IP\Mysqltest\Serveur TCP.cpp(197,15): warning C4477: 'printf' : la chaîne de format '%s' nécessite un argument de type 'char *', mais l'argument variadique 1 est de type 'unsigned int'
+G:\Travail\GitHub\SensorPong\Serveur TCP-IP\Mysqltest\Serveur TCP.cpp(197,15): warning C4313: 'printf' : '%s' dans la chaîne de format est en conflit avec l'argument 1 de type 'unsigned int'.
   Génération de code en cours
-  8 of 81 functions ( 9.9%) were compiled, the rest were copied from previous compilation.
+  1 of 81 functions ( 1.2%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     0 functions had inline decision re-evaluated but remain unchanged
   Fin de la génération du code
   MySqlTest.vcxproj -> G:\Travail\GitHub\SensorPong\Serveur TCP-IP\Mysqltest\x64\Release\Serveur TCP.exe
-D:\Logiciel\VS2022\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets(5384,5): warning MSB3061: Impossible de supprimer le fichier "G:\Travail\GitHub\SensorPong\Serveur TCP-IP\MySqlTest\x64\Release\MySqlTest.exe". L'accès au chemin d'accès 'G:\Travail\GitHub\SensorPong\Serveur TCP-IP\MySqlTest\x64\Release\MySqlTest.exe' est refusé.

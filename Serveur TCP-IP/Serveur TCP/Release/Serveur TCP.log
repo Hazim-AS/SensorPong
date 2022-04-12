@@ -1,0 +1,2 @@
+﻿  Serveur TCP.cpp
+G:\Travail\GitHub\SensorPong\Serveur TCP-IP\Serveur TCP\Serveur TCP.cpp(7,10): fatal error C1083: Impossible d'ouvrir le fichier include : 'mysql.h' : No such file or directory
