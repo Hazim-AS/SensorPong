@@ -1,0 +1,10 @@
+﻿L'opération de génération a démarré...
+1>------ Début de la génération : Projet : Serveur TCP, Configuration : Release x64 ------
+1>D:\Logiciel\VS2022\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(514,5): warning MSB8028: Le répertoire intermédiaire (x64\Release\) contient des fichiers partagés provenant d'un autre projet (MySqlTest.vcxproj). Cela peut entraîner un comportement de nettoyage et de regénération incorrect.
+1>Génération de code en cours
+1>Previous IPDB and IOBJ mismatch, fall back to full compilation.
+1>G:\Travail\GitHub\SensorPong\Serveur TCP-IP\MySqlTest\Serveur TCP.cpp(172): error C4703: variable de pointeur locale potentiellement non initialisée 'val' utilisée
+1>All 81 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+1>LINK : fatal error LNK1257: échec de la génération du code
+1>Génération du projet "MySqlTest.vcxproj" terminée -- ÉCHEC.
+========== Génération : 0 a réussi, 1 a échoué, 0 à jour, 0 a été ignoré ==========

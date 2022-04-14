@@ -16,13 +16,13 @@
 using namespace std;
 int qstate;
 
-/*
+
 struct Pongiste {
 	int idPongiste;
-	char email[256];
-	char nom[256];
-	char prenom[256];
-	char mdp[256];
+	string email;
+	string nom;
+	string prenom;
+	string mdp;
 	int Entraineur_idEntraineur;
 };
 
@@ -37,7 +37,7 @@ struct Entraineur {
 struct Partie {
 	int idPartie;
 	int nbrBalle;
-	int fréquence;
+	int frequence;
 	int vitesse;
 	char email[256];
 	char zoneEnvoie[256];
@@ -45,13 +45,17 @@ struct Partie {
 	float tauxDeReussite;
 	int Entraineur_idEntraineur;
 	int Pongiste_idPongiste;
-};*/
+};
+
+Pongiste pongiste;
+Entraineur entraineur;
+Partie partie;
 
 const string server = "localhost:3306";
 const string username = "root";
 const string password = "root";
 
-void main() {
+int main() {
 
 	//initialisé winsock
 	WSADATA wsData;
@@ -167,21 +171,22 @@ void main() {
 				pstmt = con->prepareStatement("SELECT idJoueur, email, nom, prenom, mdp FROM sensorpong.joueur");
 				result = pstmt->executeQuery();
 
-				while (result->next()) {
-					int idJoueur = result->getInt(1);
-					string mail = result->getString(2).c_str();
-					string nom = result->getString(3).c_str();
-					string prenom = result->getString(4).c_str();
-					string mdp = result->getString(5).c_str();
+				while (result->next()) {		
 
-					printf("Reading from table=(%d, %s, %s, %s, %s)\n", idJoueur, mail, nom, prenom, mdp);
+					map<string, string> tab{{"Prenom","pongiste1"},{"Prenom","pongiste2"} };
+					cout << tab["Prenom"];
+
+					/*idPongiste = result->getInt(1);
+					pongiste.email = result->getString(2).c_str();
+					pongiste.nom = result->getString(3).c_str();
+					pongiste.prenom = result->getString(4).c_str();
+					pongiste.mdp = result->getString(5).c_str();
+
+
+					printf("Reading from table=(%d)\n", pongiste.idPongiste );*/
+
 				}
-			}
-
-			if (strcmp(buf, "Historique Admin") == 0) {
-
 				
-
 			}
 
 		
