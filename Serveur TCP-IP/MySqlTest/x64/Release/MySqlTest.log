@@ -1,8 +1,9 @@
 ﻿D:\Logiciel\VS2022\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(514,5): warning MSB8028: Le répertoire intermédiaire (x64\Release\) contient des fichiers partagés provenant d'un autre projet (MySqlTest.vcxproj). Cela peut entraîner un comportement de nettoyage et de regénération incorrect.
   Serveur TCP.cpp
-G:\Travail\GitHub\SensorPong\Serveur TCP-IP\Mysqltest\Serveur TCP.cpp(53,13): warning C4326: le type de retour de 'main' doit être 'int' au lieu de 'void'
-G:\Travail\GitHub\SensorPong\Serveur TCP-IP\Mysqltest\Serveur TCP.cpp(165,25): warning C4018: '<' : incompatibilité signed/unsigned
-G:\Travail\GitHub\SensorPong\Serveur TCP-IP\Mysqltest\Serveur TCP.cpp(169,50): error C2664: 'unsigned long *mysql_fetch_lengths(MYSQL_RES *)' : impossible de convertir l'argument 1 de 'char *' en 'MYSQL_RES *'
-G:\Travail\GitHub\SensorPong\Serveur TCP-IP\Mysqltest\Serveur TCP.cpp(169,49): message : Les types pointés ne sont pas liés ; la conversion nécessite un reinterpret_cast, un cast de style C ou un cast de style fonction entre parenthèses.
-C:\Program Files\MySQL\MySQL Server 8.0\include\mysql.h(546,24): message : voir la déclaration de 'mysql_fetch_lengths'
+G:\Travail\GitHub\SensorPong\Serveur TCP-IP\Mysqltest\Serveur TCP.cpp(51,13): warning C4326: le type de retour de 'main' doit être 'int' au lieu de 'void'
 G:\Travail\GitHub\SensorPong\Serveur TCP-IP\Mysqltest\Serveur TCP.cpp(210,25): warning C4018: '<' : incompatibilité signed/unsigned
+  Génération de code en cours
+  Previous IPDB and IOBJ mismatch, fall back to full compilation.
+  All 81 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Fin de la génération du code
+  MySqlTest.vcxproj -> G:\Travail\GitHub\SensorPong\Serveur TCP-IP\Mysqltest\x64\Release\Serveur TCP.exe

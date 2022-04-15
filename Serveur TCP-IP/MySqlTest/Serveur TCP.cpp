@@ -147,7 +147,7 @@ void main() {
 
 			//char message[] = "p";
 
-			if (strcmp(buf, "P") == 0) {
+			/*if (strcmp(buf, "P") == 0) {
 
 				cout << "Affiche les joueurs" << endl;
 				string query = "SELECT idJoueur, email, nom, prenom, mdp FROM testsensorpong.joueur";
@@ -164,37 +164,37 @@ void main() {
 						{
 							//printf("%s ", row[i]);
 							//printf("\n");
-							
 
-							unsigned long* lengths = mysql_fetch_lengths(row[i]);
 
-							char* val = new char(lengths[i]);
+							//unsigned long* lengths = mysql_fetch_lengths(row[i]);
 
-							for (int j = 0; j < lengths[i]; j++) {
+							//char* val = new char(lengths[i]);
+
+							/*for (int j = 0; j < lengths[i]; j++) {
 								val[j] = row[i][j];
-							}
+							}*/
 
 							//val = row; //should save it to an char
 
-							printf("%s", val);
+							/*printf("%s", val);
 							printf("\n");
 							send(clientSocket, val, sizeof(val), 0);
 
-						}
-						
+						}*/
 
-					}
+
+					/* }*/
 					//send(clientSocket, buf, sizeof(buf), 0);
 					
-				}
+				/*}
 				else
 				{
 					cout << "Query failed: " << mysql_error(conn) << endl;
 				}
 
-			}
+			}*/
 
-			if (strcmp(buf, "H") == 0) {
+			if (strcmp(buf, "Historique") == 0) {
 
 				cout << "Affiche l'historique des joueurs" << endl;
 				string query = "SELECT nom, prenom, nbrBalle, frequence, vitesse, zone_envoie, zone_retour, taux_de_reussite, Date FROM testsensorpong.joueur INNER JOIN testsensorpong.partie WHERE Joueur_idJoueur = idJoueur ORDER BY Date DESC";
