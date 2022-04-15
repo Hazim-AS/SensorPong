@@ -1,25 +1,27 @@
+//Variable pour le numéro des PIN
 int fsrAnalogPin = A1;
 int fsrDigitalPin = 2; 
 int LEDpin1 = 11;
 int LEDpin2 = 12;  
 int infraPin = 34;
-int fsrReading= 0;
 
+//Variable à 0
+int fsrDigitalReading = 0;
+int fsrAnalogReading= 0;
 int nbrBalle = 0;
 int nbrTouche = 0;
 int CIP = 0;
 
 
+//Fonction interrupt()
 
 void interuptFSR(){
-  
-  Serial.print("Touche a = ");
-  Serial.println(fsrReading);
+  fsrDigitalReading = digitalRead(fsrDigitalReading);
+  Serial.print("Touche digital a = ");
+  Serial.println(fsrDigitalReading);
   digitalWrite(LEDpin2,HIGH); 
-  nbrTouche = nbrTouche+1;
-  Serial.println(nbrTouche);
-  delay(1000);
-  digitalWrite(LEDpin2,LOW);  
+//  nbrTouche = nbrTouche+1;
+//  Serial.println(nbrTouche);   
 }
 
 
@@ -28,18 +30,28 @@ void setup(void) {
   Serial.begin(9600);  
   pinMode(LEDpin1, OUTPUT);
   pinMode(LEDpin2,OUTPUT);
-  //pinMode(fsrAnalogPin,INPUT);
+  pinMode(fsrAnalogPin,INPUT);
   pinMode(infraPin,INPUT);
   pinMode(fsrDigitalPin, INPUT_PULLUP);
   attachInterrupt(digitalPinToInterrupt(fsrDigitalPin), interuptFSR, RISING);
 }
  
 void loop(void) {
+ 
+  fsrAnalogReading = analogRead(fsrAnalogPin);
+  //Serial.print("Analogie FSR = ");
+  //Serial.println(fsrAnalogReading);
 
 
-//fsrReading = analogRead(fsrAnalogPin);
-fsrReading = digitalRead(fsrAnalogPin);
-Serial.println(fsrReading);
+  
+
+
+
+
+
+
+
+
  /*
 
   while(nbrBalle !=10){
