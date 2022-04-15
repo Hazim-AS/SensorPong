@@ -55,7 +55,7 @@ const string server = "localhost:3306";
 const string username = "root";
 const string password = "root";
 
-int main() {
+void main() {
 
 	//initialisé winsock
 	WSADATA wsData;
