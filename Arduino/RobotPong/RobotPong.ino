@@ -54,16 +54,23 @@ void initialisationPartie(){
   }
   }
 
-void tirerBalle(int speed){
-  int speedBack;
+void tirerBalle(int vitesse){
+  int vitesseBack;
   digitalWrite(pinMoteurA,HIGH); 
-  analogWrite(speedMoteurA,speed);
+  analogWrite(speedMoteurA,vitesse);
   digitalWrite(freinMoteurA,LOW);
   delay(5000);
   digitalWrite(pinMoteurA,LOW); 
   analogWrite(speedMoteurA,0);
   digitalWrite(freinMoteurA,HIGH);
-  return speedBack;
+  return vitesseBack;
+  }
+
+void monterBalle(){
+  digitalWrite(pinMoteurB,HIGH); 
+  analogWrite(speedMoteurB,255);
+  digitalWrite(freinMoteurB,LOW);
+  
   }
 
 void stopTout(){
