@@ -1,3 +1,0 @@
-﻿main.obj : error LNK2001: symbole externe non résolu mysql_real_connect
-main.obj : error LNK2001: symbole externe non résolu mysql_init
-G:\Travail\GitHub\SensorPong\Serveur TCP-IP\BarebonesServer\x64\Release\BarebonesServer.exe : fatal error LNK1120: 2 externes non résolus

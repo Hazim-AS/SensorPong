@@ -1,5 +1,0 @@
-﻿  Serveur TCP.cpp
-G:\Travail\GitHub\SensorPong\Serveur TCP-IP\Serveur TCP\Serveur TCP.cpp(57,13): warning C4326: le type de retour de 'main' doit être 'int' au lieu de 'void'
-G:\Travail\GitHub\SensorPong\Serveur TCP-IP\Serveur TCP\Serveur TCP.cpp(188,184): error C2440: 'initialisation' : impossible de convertir de 'std::basic_string<char,std::char_traits<char>,std::allocator<char>>' en 'char []'
-G:\Travail\GitHub\SensorPong\Serveur TCP-IP\Serveur TCP\Serveur TCP.cpp(188,18): message : Aucun opérateur de conversion définie par l'utilisateur disponible qui puisse effectuer cette conversion, ou l'opérateur ne peut pas être appelé
-G:\Travail\GitHub\SensorPong\Serveur TCP-IP\Serveur TCP\Serveur TCP.cpp(194,43): error C2070: 'char []' : opérande sizeof non conforme

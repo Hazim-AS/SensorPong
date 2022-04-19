@@ -1,8 +1,0 @@
-﻿  main.cpp
-G:\Travail\GitHub\SensorPong\Serveur TCP-IP\BarebonesServer\main.cpp(10,13): warning C4326: le type de retour de 'main' doit être 'int' au lieu de 'void'
-G:\Travail\GitHub\SensorPong\Serveur TCP-IP\BarebonesServer\main.cpp(20,13): warning C4101: 'res' : variable locale non référencée
-G:\Travail\GitHub\SensorPong\Serveur TCP-IP\BarebonesServer\main.cpp(19,12): warning C4101: 'row' : variable locale non référencée
-  LINK : G:\Travail\GitHub\SensorPong\Serveur TCP-IP\BarebonesServer\x64\Debug\BarebonesServer.exe introuvable ou non généré par la dernière édition de liens incrémentielle ; édition de liens complète en cours
-main.obj : error LNK2019: symbole externe non résolu mysql_init référencé dans la fonction main
-main.obj : error LNK2019: symbole externe non résolu mysql_real_connect référencé dans la fonction main
-G:\Travail\GitHub\SensorPong\Serveur TCP-IP\BarebonesServer\x64\Debug\BarebonesServer.exe : fatal error LNK1120: 2 externes non résolus

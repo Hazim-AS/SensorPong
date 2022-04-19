@@ -1,7 +1,0 @@
-﻿L'opération de génération a démarré...
-1>------ Début de la génération : Projet : BarebonesServer, Configuration : Release x64 ------
-1>main.obj : error LNK2001: symbole externe non résolu mysql_real_connect
-1>main.obj : error LNK2001: symbole externe non résolu mysql_init
-1>G:\Travail\GitHub\SensorPong\Serveur TCP-IP\BarebonesServer\x64\Release\BarebonesServer.exe : fatal error LNK1120: 2 externes non résolus
-1>Génération du projet "BarebonesServer.vcxproj" terminée -- ÉCHEC.
-========== Génération : 0 a réussi, 1 a échoué, 0 à jour, 0 a été ignoré ==========
