@@ -10,15 +10,16 @@
 #include "jdbc/cppconn/driver.h"
 #include "jdbc/cppconn/exception.h"
 #include "jdbc/mysql_connection.h"
+#include <n>
 
 #pragma comment (lib, "ws2_32.lib")
 
 using namespace std;
+//using namespace rapidjson;
 int qstate;
 
-
 struct Pongiste {
-	int idPongiste;
+	string idPongiste;
 	string email;
 	string nom;
 	string prenom;
@@ -173,18 +174,29 @@ void main() {
 
 				while (result->next()) {		
 
-					map<string, string> tab{{"Prenom","pongiste1"},{"Prenom","pongiste2"} };
-					cout << tab["Prenom"];
+					int i = 0;
+					//int tab[10];
+					/*map<int, int> tab{{0,map<string,int> { {"Prénom",1}}},{0,map<string,int> { {"Prénom",1}}},{0,map<string,int> { {"Prénom",1}}}};
+					cout << tab[0]["Prenom"] << "\n";*/
 
-					/*idPongiste = result->getInt(1);
+					pongiste.idPongiste = result->getString(1).c_str();
 					pongiste.email = result->getString(2).c_str();
 					pongiste.nom = result->getString(3).c_str();
 					pongiste.prenom = result->getString(4).c_str();
 					pongiste.mdp = result->getString(5).c_str();
 
+					//const char* joueur = {"ID": pongiste.idPongiste , "email" : +pongiste.email + , "nom" : +pongiste.nom + , "prenom" : +pongiste.prenom + , "mdp " : +pongiste.mdp + };
 
-					printf("Reading from table=(%d)\n", pongiste.idPongiste );*/
+					//auto json = "{"firstName":"Sean","lastName":"Brown","empId":21453,"department":"Computer"}";
 
+	
+
+					//cout << json;
+
+					//char* val = json;
+
+					send(clientSocket, json, sizeof(json), 0);
+					
 				}
 				
 			}

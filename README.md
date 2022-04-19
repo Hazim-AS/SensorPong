@@ -17,49 +17,50 @@ Taches :
 		- Joueur
 		- Partie
 
-- création d'un Joueur : 
-INSERT INTO sensorpong.joueur (email,nom,prenom,mdp,Entraineur_idEntraineur) 
-VALUES (@mail,@nom,@prenom,@mdp,@idEntraineur);
+	Requete SQL :
+	- création d'un Joueur : 
+	INSERT INTO sensorpong.joueur (email,nom,prenom,mdp,Entraineur_idEntraineur) 
+	VALUES (@mail,@nom,@prenom,@mdp,@idEntraineur);
 
-- connexion au compte de l'entraîneur :
-SELECT * 
-FROM sensorpong.entraineur 
-WHERE email=@mail && mdp=@mdp;
+	- connexion au compte de l'entraîneur :
+	SELECT * 
+	FROM sensorpong.entraineur 
+	WHERE email=@mail && mdp=@mdp;
 
-- connexion au compte du joueur: 
-SELECT * 
-FROM sensorpong.joueur 
-WHERE email=@mail && mdp=@mdp
+	- connexion au compte du joueur: 
+	SELECT * 
+	FROM sensorpong.joueur 
+	WHERE email=@mail && mdp=@mdp
 
-- Récupérer vitesse et fréquence des balles de la dernière partie : 
-SELECT frequence,vitesse,MAX(Date) 
-FROM sensorpong.joueur INNER JOIN sensorpong.partie 
-WHERE Joueur_idJoueur = idJoueur AND idJoueur=@idJoueur;
+	- Récupérer vitesse et fréquence des balles de la dernière partie : 
+	SELECT frequence,vitesse,MAX(Date) 
+	FROM sensorpong.joueur INNER JOIN sensorpong.partie 
+	WHERE Joueur_idJoueur = idJoueur AND idJoueur=@idJoueur;
 
-- Enregistrer la partie d'un joueur apres la fin de la partie : 
-INSERT INTO sensorpong.partie(nbrBalle,frequence,vitesse,zone_envoie,zone_retour,taux_de_reussite,Date,Joueur_idJoueur,Entraineur_idEntraineur)
-VALUES(@nbrBalle,@frequence,@vitesse,@zone_envoie,@zone_retour,@taux_de_reussite,@Date,@idJoueur,@idEntraineur)
+	- Enregistrer la partie d'un joueur apres la fin de la partie : 
+	INSERT INTO 	sensorpong.partie(nbrBalle,frequence,vitesse,zone_envoie,zone_retour,taux_de_reussi	te,Date,Joueur_idJoueur,Entraineur_idEntraineur)
+	VALUES(@nbrBalle,@frequence,@vitesse,@zone_envoie,@zone_retour,@taux_de_reussite,	@Date,@idJoueur,@idEntraineur)
 
-- Historique complet des Joueurs: 
-SELECT nom, prenom, nbrBalle, frequence, vitesse, zone_envoie, zone_retour, taux_de_reussite, Date 
-FROM sensorpong.joueur INNER JOIN sensorpong.partie 
-WHERE Joueur_idJoueur = idJoueur ORDER BY Date DESC;
+	- Historique complet des Joueurs: 
+	SELECT nom, prenom, nbrBalle, frequence, vitesse, zone_envoie, zone_retour, 	taux_de_reussite, Date 
+	FROM sensorpong.joueur INNER JOIN sensorpong.partie 
+	WHERE Joueur_idJoueur = idJoueur ORDER BY Date DESC;
 
-- Historique complet d'un Joueur : 
-SELECT nom, prenom, nbrBalle, frequence, vitesse, zone_envoie, zone_retour, taux_de_reussite, Date 
-FROM sensorpong.joueur INNER JOIN sensorpong.partie
-WHERE Joueur_idJoueur = idJoueur && nom='Alger' && prenom='Kylian' ORDER BY Date DESC;
+	- Historique complet d'un Joueur :
+	SELECT nom, prenom, nbrBalle, frequence, vitesse, zone_envoie, zone_retour, 	taux_de_reussite, Date 
+	FROM sensorpong.joueur INNER JOIN sensorpong.partie
+	WHERE Joueur_idJoueur = idJoueur && nom='Alger' && prenom='Kylian' ORDER BY Date 	DESC;
 
-- Historique des 10 dernières partie d'un Joueur en fonction de la configuration : SELECT nom, prenom, nbrBalle, frequence, vitesse, zone_envoie, zone_retour, taux_de_reussite, Date 
-FROM sensorpong.joueur 
-INNER JOIN sensorpong.partie WHERE Joueur_idJoueur = idJoueur AND idJoueur=@idJoueur AND nbrBalle >= @nbrBalleMin AND nbrBalle <= @nbrBalleMax AND frequence>= @freqMin AND frequence<= @freqMax AND vitesse>=@vitMin AND vitesse<=@vitMax AND zone_envoie LIKE  CONCAT('%',@zoneEnvoie, '%') AND zone_retour LIKE CONCAT('%',@zoneRetour, '%') AND taux_de_reussite >= @tauxMin AND taux_de_reussite <= @tauxMax 
-ORDER BY Date DESC LIMIT 10;
+	- Historique des 10 dernières partie d'un Joueur en fonction de la configuration : 	SELECT nom, prenom, nbrBalle, frequence, vitesse, zone_envoie, zone_retour, 	taux_de_reussite, Date 
+	FROM sensorpong.joueur 
+	INNER JOIN sensorpong.partie WHERE Joueur_idJoueur = idJoueur AND 	idJoueur=@idJoueur AND nbrBalle >= @nbrBalleMin AND nbrBalle <= @nbrBalleMax AND 	frequence>= @freqMin AND frequence<= @freqMax AND vitesse>=@vitMin AND 	vitesse<=@vitMax AND zone_envoie LIKE  CONCAT('%',@zoneEnvoie, '%') AND zone_retour 	LIKE CONCAT('%',@zoneRetour, '%') AND taux_de_reussite >= @tauxMin AND 	taux_de_reussite <= @tauxMax 
+	ORDER BY Date DESC LIMIT 10;
 
-- Effacer un joueur : 
-DELETE FROM sensorpong.joueur WHERE idJoueur=@idJoueur;
+	- Effacer un joueur : 
+	DELETE FROM sensorpong.joueur WHERE idJoueur=@idJoueur;
 
--Effacer les parties du joueurs :
-DELETE FROM sensorpong.partie WHERE Joueur_idJoueur=@idJoueur;
+	- Effacer les parties du joueurs :
+	DELETE FROM sensorpong.partie WHERE Joueur_idJoueur=@idJoueur;
 
 
 
