@@ -7,7 +7,7 @@ void creationUser(char msg[]);
 
 string connexionUser(char msg[]);
 
-string connexionAdmin (char msg[]);
+string connexionAdmin(char msg[]);
 
 string ListeJoueurs(char msg[]);
 

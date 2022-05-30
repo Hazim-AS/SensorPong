@@ -1,7 +1,6 @@
 #include <iostream>
 #include "rapidjson/document.h"
 #include "jdbc/cppconn/prepared_statement.h"
-#include "jdbc/cppconn/statement.h"
 #include "jdbc/cppconn/exception.h"
 #include "jdbc/mysql_connection.h"
 #include "jdbc/cppconn/driver.h"
@@ -13,7 +12,6 @@ const string server = "127.0.0.1:3306";
 const string username = "root";
 const string password = "root";
 sql::Connection* con;
-sql::Statement* stmt;
 sql::PreparedStatement* pstmt;
 sql::ResultSet* result;
 sql::Driver* driver;
@@ -53,6 +51,8 @@ void creationUser(char msg[]) {
 string connexionUser(char msg[]) {
 
 	string json = "{\"ConnexionUser\":";
+	Document mydoc;
+	mydoc.Parse(msg);
 
 	try
 	{
@@ -70,10 +70,7 @@ string connexionUser(char msg[]) {
 
 	con->setSchema("sensorpong");
 
-	Document mydoc;
-	mydoc.Parse(msg);
-
-	pstmt = con->prepareStatement("SELECT idJoueur, email, nom, prenom, mdp, idEntraineur FROM sensorpong.joueur WHERE email = ? &&  mdp = ?;");
+	pstmt = con->prepareStatement("SELECT idJoueur, email, nom, prenom, mdp, Entraineur_idEntraineur FROM sensorpong.joueur WHERE email = ? &&  mdp = ?;");
 
 	pstmt->setString(1, mydoc["ConnexionUser"]["email"].GetString());
 	pstmt->setString(2, mydoc["ConnexionUser"]["mdp"].GetString());
@@ -89,7 +86,7 @@ string connexionUser(char msg[]) {
 			string mdp = result->getString(5).c_str();
 			int idEntraineur = result->getInt(6);
 
-			json = "{\"idJoueur\": " + to_string(idJoueur) + ", \"email\": \"" + email + "\", \"nom\": \"" + nom + "\", \"prenom\": \"" + prenom + "\", \"mdp\": \"" + mdp + "\", \"idEntraineur\": " + to_string(idEntraineur) + "}";
+			json += "{\"idJoueur\": " + to_string(idJoueur) + ", \"email\": \"" + email + "\", \"nom\": \"" + nom + "\", \"prenom\": \"" + prenom + "\", \"mdp\": \"" + mdp + "\", \"idEntraineur\": " + to_string(idEntraineur) + "}";
 
 		}
 		json += "}";
@@ -221,8 +218,6 @@ string HistoriqueComplet(char msg[] ) {
 	result = pstmt->executeQuery();
 ;
 	while (result->next()) {
-
-
 		string nom = result->getString(1).c_str();
 		string prenom = result->getString(2).c_str();
 		int nbrBalle = result->getInt(3);
@@ -250,7 +245,7 @@ string HistoriqueJoueurC(char msg[]) {
 	string* json = new string[4000];
 	int i = 0;
 
-	string jsoncomplet = "{\"HistoriqueJoueurC\":";
+	string jsoncomplet = "{\"HistoriqueCJoueur\":";
 
 	try
 	{
@@ -273,9 +268,9 @@ string HistoriqueJoueurC(char msg[]) {
 
 	pstmt = con->prepareStatement("SELECT nom, prenom, nbrBalle, frequence, vitesse, zone_envoie, zone_retour, taux_de_reussite, Date FROM sensorpong.joueur INNER JOIN sensorpong.partie WHERE Joueur_idJoueur = ? && nom = ? && prenom = ? ORDER BY Date DESC;");
 
-	pstmt->setInt(1, mydoc["HistoriqueJoueurC"]["idJoueur"].GetInt());
-	pstmt->setString(2, mydoc["HistoriqueJoueurC"]["nom"].GetString());
-	pstmt->setString(3, mydoc["HistoriqueJoueurC"]["prenom"].GetString());
+	pstmt->setInt(1, mydoc["HistoriqueCJoueur"]["idJoueur"].GetInt());
+	pstmt->setString(2, mydoc["HistoriqueCJoueur"]["nom"].GetString());
+	pstmt->setString(3, mydoc["HistoriqueCJoueur"]["prenom"].GetString());
 
 	result = pstmt->executeQuery();
 	;

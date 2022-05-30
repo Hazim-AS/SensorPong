@@ -8,14 +8,16 @@ using namespace std;
 
 void main() {
 	
+	
+#if defined (WIN32)
 	//initialisé winsock
-	WSADATA wsData;
-	WORD ver = MAKEWORD(2, 2);
+	WSADATA WSAData;
+	int erreur = WSAStartup(MAKEWORD(2, 2), &WSAData);
+#else
+	int erreur = 0;
+#endif
 
-	int wsOk = WSAStartup(ver, &wsData);
-
-
-	if (wsOk != 0) {
+	if (erreur != 0) {
 		cerr << "Can't Initialize winsock ! Quitting" << endl;
 		return;
 	}
@@ -66,7 +68,7 @@ void main() {
 	//boucle while : accepter et echo le message au client
 	char msgRcv[4096];
 	char error[] = "Erreur";
-	//char error[] ="Erreur";
+
 
 	while (true)
 	{
@@ -98,7 +100,8 @@ void main() {
 		if (strstr(msgRcv, "ConnexionUser") != NULL) {
 
 			string json = connexionUser(msgRcv);
-
+			
+			cout << "reçu";
 			char* msg = new char[json.size() + 1];
 			copy(json.begin(), json.end(), msg);
 			msg[json.size()] = '\0';
@@ -134,7 +137,7 @@ void main() {
 		}
 
 		//Boucle pour la reception et l'envoie des données de l'historique complet d'un joueur
-		if (strstr(msgRcv, "HistoriqueJoueurC") != NULL) {
+		if (strstr(msgRcv, "HistoriqueCJoueur") != NULL) {
 
 			string json = HistoriqueJoueurC(msgRcv);
 
@@ -158,12 +161,7 @@ void main() {
 
 			int size_msg = json.size();
 
-			if (strcmp(msg, "{\"HistoriqueJoueur\":}") == 0) {
-				send(clientSocket, error, sizeof(error), 0);
-			}
-			else {
 				send(clientSocket, msg, size_msg, 0);
-			}
 		}
 
 		//Condition pour la reception et l'envoie des données de l'historique complet des joueurs
@@ -176,6 +174,8 @@ void main() {
 			msg[json.size()] = '\0';
 
 			int size_msg = json.size();		
+
+			send(clientSocket, msg, size_msg, 0);
 
 		}
 
@@ -193,8 +193,6 @@ void main() {
 			send(clientSocket, msg, size_msg, 0);
 
 		}
-
-		
 
 		if (strstr(msgRcv, "GameStart") != NULL) {
 
