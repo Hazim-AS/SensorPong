@@ -1,9 +1,9 @@
 #include <iostream>
 #include <WS2tcpip.h>
-#include "test.h"
+#include "requete.h"
 
 #pragma comment (lib, "ws2_32.lib")
-
+  
 using namespace std;
 
 void main() {
@@ -64,14 +64,16 @@ void main() {
 	closesocket(listening);
 
 	//boucle while : accepter et echo le message au client
-	char buf[4096];
+	char msgRcv[4096];
+	char error[] = "Erreur";
+	//char error[] ="Erreur";
 
 	while (true)
 	{
-		memset(buf, 0, 4096);
+		memset(msgRcv, 0, 4096);
 
 		//Attendre que le client envoie des données
-		int bytesReceived = recv(clientSocket, buf, 4096, 0);
+		int bytesReceived = recv(clientSocket, msgRcv, 4096, 0);
 
 		if (bytesReceived == SOCKET_ERROR)
 		{
@@ -84,38 +86,150 @@ void main() {
 			cout << "Client disconnected " << endl;
 			break;
 		}
-		// Echo le message au client
 
-		if (strcmp(buf, "{\"ConnexionUser\":{\"email\":\"kylian.alger-leonard@lycee-jeanrostand.fr\",\"mdp\":\"147852\"}}") == 0) {
-			//cout << "coucou\n";
-			//char msg_rcv[] = "{\"ConnexionUser\":{\"email\":\"kylian.alger-leonard@lycee-jeanrostand.fr\",\"mdp\":\"147852\"}}";
-			//cout << msg_rcv;
-			string msg_s = test(buf);
+		//Condition pour la création d'un profil utilisateur
+		if (strstr(msgRcv, "CreerCompte") != NULL) {
 
-			//cout << msg_s << endl;
-			//cout << sizeof(msg_s) << endl;
-			//cout << msg_s.c_str() << endl;
+			creationUser(msgRcv);
 
-			char* tab2 = new char[msg_s.length() + 1];
-			strcpy(tab2, msg_s.c_str());
+		}
 
-			send(clientSocket, tab2, sizeof(tab2), 0);
+		//Condition pour la reception des données pour la connexion du joueur
+		if (strstr(msgRcv, "ConnexionUser") != NULL) {
+
+			string json = connexionUser(msgRcv);
+
+			char* msg = new char[json.size() + 1];
+			copy(json.begin(), json.end(), msg);
+			msg[json.size()] = '\0';
+
+			int size_msg = json.size();
+			if (strcmp(msg, "{\"ConnexionUser\":}") == 0) {
+				send(clientSocket, error, sizeof(error), 0);
+			}
+			else {
+				send(clientSocket, msg, size_msg, 0);
+			}
+
+		}
+
+		//Condition pour la reception des données pour la connexion de l'entraineur
+		if (strstr(msgRcv, "ConnexionAdmin") != NULL) {
+
+			string json = connexionAdmin(msgRcv);
+
+			char* msg = new char[json.size() + 1];
+			copy(json.begin(), json.end(), msg);
+			msg[json.size()] = '\0';
+
+			int size_msg = json.size();
+
+			if (strcmp(msg, "{\"ConnexionAdmin\":}") == 0) {
+				send(clientSocket, error, sizeof(error), 0);
+			}
+			else {
+				send(clientSocket, msg, size_msg, 0);
+			}
+
+		}
+
+		//Boucle pour la reception et l'envoie des données de l'historique complet d'un joueur
+		if (strstr(msgRcv, "HistoriqueJoueurC") != NULL) {
+
+			string json = HistoriqueJoueurC(msgRcv);
+
+			char* msg = new char[json.size() + 1];
+			copy(json.begin(), json.end(), msg);
+			msg[json.size()] = '\0';
+
+			int size_msg = json.size();
+
+			send(clientSocket, msg, size_msg, 0);
+		}
+
+		//Condition pour la reception et l'envoie des données de l'historique des 10 dernieres partie d'un joueur en fonction de la configuration
+		if (strstr(msgRcv, "HistoriqueJoueur") != NULL) {
+
+			string json = HistoriqueJoueur(msgRcv);
+
+			char* msg = new char[json.size() + 1];
+			copy(json.begin(), json.end(), msg);
+			msg[json.size()] = '\0';
+
+			int size_msg = json.size();
+
+			if (strcmp(msg, "{\"HistoriqueJoueur\":}") == 0) {
+				send(clientSocket, error, sizeof(error), 0);
+			}
+			else {
+				send(clientSocket, msg, size_msg, 0);
+			}
+		}
+
+		//Condition pour la reception et l'envoie des données de l'historique complet des joueurs
+		if (strstr(msgRcv, "HistoriqueComplet") != NULL) {
+
+			string json = HistoriqueComplet(msgRcv);
+
+			char* msg = new char[json.size() + 1];
+			copy(json.begin(), json.end(), msg);
+			msg[json.size()] = '\0';
+
+			int size_msg = json.size();		
+
+		}
+
+		//Condition pour la reception et l'envoie des données de la liste des joueurs
+		if (strstr(msgRcv, "ListeJoueurs") != NULL) {
+
+			string json = ListeJoueurs(msgRcv);
+
+			char* msg = new char[json.size() + 1];
+			copy(json.begin(), json.end(), msg);
+			msg[json.size()] = '\0';
+
+			int size_msg = json.size();
+
+			send(clientSocket, msg, size_msg, 0);
+
+		}
+
+		
+
+		if (strstr(msgRcv, "GameStart") != NULL) {
+
+			string json = GameStart(msgRcv);
+
+			char* msg = new char[json.size() + 1];
+			copy(json.begin(), json.end(), msg);
+			msg[json.size()] = '\0';
+
+			int size_msg = json.size();
+
 			
 		}
 
-		/*if (strcmp(buf, "H") == 0) {
-			cout << "salut\n";
-			char msg_rcv[] = "{\"ConnexionAdmin\":{\"email\":\"ahmedsalih.hazim@gmail.com\",\"mdp\":\"1234\"}}";
-			//cout << msg_rcv;
-			test2(msg_rcv);
-			cout << test2(msg_rcv);
+		//Condition pour enregistrer la partie d'un joueur
+		if (strstr(msgRcv, "EnregistrerPartie") != NULL) {
 
-			send(clientSocket, msg_rcv, sizeof(msg_rcv), 0);
+			enregistrerPartie(msgRcv);
 
-		}*/
+		}
 
+		//Condition pour la mise à jour du profil d'un utilisateur
+		if (strstr(msgRcv, "UpdateUser") != NULL) {
+
+			UpdateUser(msgRcv);
+
+		}
+
+		//Condition pour la suppresion d'un utilisateur et de ces parties
+		if (strstr(msgRcv, "DeleteUser") != NULL) {
+
+			DeleteUser(msgRcv);
+
+		}
 	}
-
 
 	//supprimer une socket
 	closesocket(clientSocket);
