@@ -50,7 +50,7 @@ void creationUser(char msg[]) {
 
 string connexionUser(char msg[]) {
 
-	string json = "{\"ConnexionUser\":";
+	
 	Document mydoc;
 	mydoc.Parse(msg);
 
@@ -69,6 +69,8 @@ string connexionUser(char msg[]) {
 	}
 
 	con->setSchema("sensorpong");
+
+	string json = "{\"ConnexionUser\":";
 
 	pstmt = con->prepareStatement("SELECT idJoueur, email, nom, prenom, mdp, Entraineur_idEntraineur FROM sensorpong.joueur WHERE email = ? &&  mdp = ?;");
 

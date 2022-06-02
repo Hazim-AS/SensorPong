@@ -18,7 +18,7 @@ void main() {
 #endif
 
 	if (erreur != 0) {
-		cerr << "Can't Initialize winsock ! Quitting" << endl;
+		cerr << "Can't Initialize sock ! Quitting" << endl;
 		return;
 	}
 
@@ -62,16 +62,12 @@ void main() {
 		cout << host << "connect on port" << ntohs(client.sin_port) << endl;
 	}
 
-	//Fermer la socket d'ecoute
-	closesocket(listening);
+
 
 	//boucle while : accepter et echo le message au client
-	char msgRcv[4096];
-	char error[] = "Erreur";
-
-
 	while (true)
 	{
+		char msgRcv[4096];
 		memset(msgRcv, 0, 4096);
 
 		//Attendre que le client envoie des données
@@ -99,9 +95,9 @@ void main() {
 		//Condition pour la reception des données pour la connexion du joueur
 		if (strstr(msgRcv, "ConnexionUser") != NULL) {
 
+			char error[] = "{\"Erreur\":\"ConnexionUser\"}";
 			string json = connexionUser(msgRcv);
 			
-			cout << "reçu";
 			char* msg = new char[json.size() + 1];
 			copy(json.begin(), json.end(), msg);
 			msg[json.size()] = '\0';
@@ -120,6 +116,7 @@ void main() {
 		if (strstr(msgRcv, "ConnexionAdmin") != NULL) {
 
 			string json = connexionAdmin(msgRcv);
+			char error[] = "{\"Erreur\":\"ConnexionAdmin\"}";
 
 			char* msg = new char[json.size() + 1];
 			copy(json.begin(), json.end(), msg);
@@ -154,6 +151,7 @@ void main() {
 		if (strstr(msgRcv, "HistoriqueJoueur") != NULL) {
 
 			string json = HistoriqueJoueur(msgRcv);
+			char error[] = "{\"Erreur\":\"HistoriqueJoueur\"}";
 
 			char* msg = new char[json.size() + 1];
 			copy(json.begin(), json.end(), msg);
@@ -161,7 +159,12 @@ void main() {
 
 			int size_msg = json.size();
 
+			if (strcmp(msg, "{\"HistoriqueJoueur\":}") == 0) {
+				send(clientSocket, error, sizeof(error), 0);
+			}
+			else {
 				send(clientSocket, msg, size_msg, 0);
+			}
 		}
 
 		//Condition pour la reception et l'envoie des données de l'historique complet des joueurs
@@ -228,6 +231,9 @@ void main() {
 
 		}
 	}
+
+	//Fermer la socket d'ecoute
+	closesocket(listening);
 
 	//supprimer une socket
 	closesocket(clientSocket);
