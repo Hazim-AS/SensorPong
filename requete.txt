@@ -1,0 +1,25 @@
+{"CreerCompte":{"email":"durant@mail.fr", "nom": "Durant", "prenom": "Phillipe", "mdp": "jhu54", "idEntraineur":1}}
+
+{"ConnexionUser":{"email":"kylian.alger-leonard@lycee-jeanrostand.fr","mdp":"147852"}}
+
+{"ConnexionAdmin":{"email":"ahmedsalih.hazim@gmail.com","mdp":"1234"}}
+
+{"HistoriqueCJoueur":{"idJoueur": 1, "nom":"Alger-Leonard", "prenom":"Kylian"}}
+
+{"HistoriqueJoueur":{"idJoueur": 1, "zone envoie": 2, "zone retour": 5}}
+
+{"HistoriqueComplet":{"idEntraineur": 1}}
+
+{"UpdateUser":{"idJoueur": 1, "email": "kylian.alger-leonard@lycee-jeanrostand.fr", "nom": "Alger-Leonard", "prenom": "Kylian", "mdp": "147852"}}
+
+{"DeleteUser":{"idJoueur":7}}
+
+{"ListeJoueurs":{"idEntraineur":1}}
+
+{"GameStart" :{"idJoueur": 1,"nbrBalle": 10,"zone envoie": 2,"zone retour": 1}} //App
+
+{"GameStart" :{"nbrBalle": 10,"zone envoie": 2,"zone retour": 1,"frequence”:”rapide”,"vitesse":”moyenne”}} //Robot
+
+Cas d'erreur:
+
+{"HistoriqueComplet":}
