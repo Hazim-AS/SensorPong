@@ -98,6 +98,8 @@ void main() {
 			char error[] = "{\"Erreur\":\"ConnexionUser\"}";
 			string json = connexionUser(msgRcv);
 			
+			cout << "connexion reçu";
+
 			char* msg = new char[json.size() + 1];
 			copy(json.begin(), json.end(), msg);
 			msg[json.size()] = '\0';

@@ -27,9 +27,9 @@ void enregistrerPartie(char msg[]);
 
 /*
 
-string AppParam(char msg[]);
+string GameParam(char msg[]);
 
-string RobotParam(char msg[]);
+string AppParam(char msg[]);
 
 */
 

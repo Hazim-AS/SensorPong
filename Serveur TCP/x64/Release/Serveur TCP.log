@@ -1,12 +1,12 @@
 ﻿  Serveur TCP.cpp
 G:\Travail\GitHub\SensorPong\Serveur TCP\Serveur TCP.cpp(9,13): warning C4326: le type de retour de 'main' doit être 'int' au lieu de 'void'
-G:\Travail\GitHub\SensorPong\Serveur TCP\Serveur TCP.cpp(105,30): warning C4267: 'initialisation' : conversion de 'size_t' en 'int', perte possible de données
-G:\Travail\GitHub\SensorPong\Serveur TCP\Serveur TCP.cpp(125,30): warning C4267: 'initialisation' : conversion de 'size_t' en 'int', perte possible de données
-G:\Travail\GitHub\SensorPong\Serveur TCP\Serveur TCP.cpp(145,30): warning C4267: 'initialisation' : conversion de 'size_t' en 'int', perte possible de données
-G:\Travail\GitHub\SensorPong\Serveur TCP\Serveur TCP.cpp(160,30): warning C4267: 'initialisation' : conversion de 'size_t' en 'int', perte possible de données
-G:\Travail\GitHub\SensorPong\Serveur TCP\Serveur TCP.cpp(179,30): warning C4267: 'initialisation' : conversion de 'size_t' en 'int', perte possible de données
-G:\Travail\GitHub\SensorPong\Serveur TCP\Serveur TCP.cpp(194,30): warning C4267: 'initialisation' : conversion de 'size_t' en 'int', perte possible de données
-G:\Travail\GitHub\SensorPong\Serveur TCP\Serveur TCP.cpp(208,30): warning C4267: 'initialisation' : conversion de 'size_t' en 'int', perte possible de données
+G:\Travail\GitHub\SensorPong\Serveur TCP\Serveur TCP.cpp(107,30): warning C4267: 'initialisation' : conversion de 'size_t' en 'int', perte possible de données
+G:\Travail\GitHub\SensorPong\Serveur TCP\Serveur TCP.cpp(127,30): warning C4267: 'initialisation' : conversion de 'size_t' en 'int', perte possible de données
+G:\Travail\GitHub\SensorPong\Serveur TCP\Serveur TCP.cpp(147,30): warning C4267: 'initialisation' : conversion de 'size_t' en 'int', perte possible de données
+G:\Travail\GitHub\SensorPong\Serveur TCP\Serveur TCP.cpp(162,30): warning C4267: 'initialisation' : conversion de 'size_t' en 'int', perte possible de données
+G:\Travail\GitHub\SensorPong\Serveur TCP\Serveur TCP.cpp(181,30): warning C4267: 'initialisation' : conversion de 'size_t' en 'int', perte possible de données
+G:\Travail\GitHub\SensorPong\Serveur TCP\Serveur TCP.cpp(196,30): warning C4267: 'initialisation' : conversion de 'size_t' en 'int', perte possible de données
+G:\Travail\GitHub\SensorPong\Serveur TCP\Serveur TCP.cpp(210,30): warning C4267: 'initialisation' : conversion de 'size_t' en 'int', perte possible de données
   Génération de code en cours
   1 of 466 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
