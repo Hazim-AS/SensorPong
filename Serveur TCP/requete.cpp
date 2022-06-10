@@ -1,25 +1,22 @@
 #include <iostream>
 #include "rapidjson/document.h"
-#include "jdbc/cppconn/prepared_statement.h"
-#include "jdbc/cppconn/exception.h"
-#include "jdbc/mysql_connection.h"
-#include "jdbc/cppconn/driver.h"
+#include "cppconn/prepared_statement.h"
+#include "cppconn/exception.h"
+#include "mysql_connection.h"
+#include "cppconn/driver.h"
 
 using namespace std;
 using namespace rapidjson;
 
-const string server = "127.0.0.1:3306";
-const string username = "root";
-const string password = "root";
+const string server = "localhost:3306";
+const string username = "sensorpong";
+const string password = "sensor";
 sql::Connection* con;
 sql::PreparedStatement* pstmt;
 sql::ResultSet* result;
 sql::Driver* driver;
 
-void creationUser(char msg[]) {
-
-	Document mydoc;
-	mydoc.Parse(msg);
+void ConnexionBDD() {
 
 	try
 	{
@@ -28,7 +25,7 @@ void creationUser(char msg[]) {
 		con = driver->connect(server, username, password);
 	}
 
-	catch (sql::SQLException e)
+	catch (sql::SQLException &e)
 	{
 		cout << "Could not connect to server. Error message: " << e.what() << endl;
 		system("pause");
@@ -36,6 +33,15 @@ void creationUser(char msg[]) {
 	}
 
 	con->setSchema("sensorpong");
+}
+
+
+void creationUser(char msg[]) {
+
+	Document mydoc;
+	mydoc.Parse(msg);
+
+	ConnexionBDD();
 
 	pstmt = con->prepareStatement("INSERT INTO sensorpong.joueur (email,nom,prenom,mdp,Entraineur_idEntraineur) VALUES(?, ?, ?, ?, ?);");
 
@@ -50,25 +56,11 @@ void creationUser(char msg[]) {
 
 string connexionUser(char msg[]) {
 
-	
+
 	Document mydoc;
 	mydoc.Parse(msg);
 
-	try
-	{
-		driver = get_driver_instance();
-		//for demonstration only. never save password in the code!
-		con = driver->connect(server, username, password);
-	}
-
-	catch (sql::SQLException e)
-	{
-		cout << "Could not connect to server. Error message: " << e.what() << endl;
-		system("pause");
-		exit(1);
-	}
-
-	con->setSchema("sensorpong");
+	ConnexionBDD();
 
 	string json = "{\"ConnexionUser\":";
 
@@ -78,7 +70,7 @@ string connexionUser(char msg[]) {
 	pstmt->setString(2, mydoc["ConnexionUser"]["mdp"].GetString());
 
 	result = pstmt->executeQuery();
-	
+
 		while (result->next()) {
 
 			int idJoueur = result->getInt(1);
@@ -101,21 +93,7 @@ string connexionAdmin(char msg[]) {
 	Document mydoc;
 	mydoc.Parse(msg);
 
-	try
-	{
-		driver = get_driver_instance();
-		//for demonstration only. never save password in the code!
-		con = driver->connect(server, username, password);
-	}
-
-	catch (sql::SQLException e)
-	{
-		cout << "Could not connect to server. Error message: " << e.what() << endl;
-		system("pause");
-		exit(1);
-	}
-
-	con->setSchema("sensorpong");
+	ConnexionBDD();
 
 	pstmt = con->prepareStatement("SELECT idEntraineur, email, nom, prenom, mdp FROM sensorpong.entraineur WHERE email = ? &&  mdp = ?;");
 
@@ -133,10 +111,10 @@ string connexionAdmin(char msg[]) {
 		string mdp = result->getString(5).c_str();
 
 		json += "{\"idEntraieur\": " + to_string(idEntraieur) + ", \"email\": \"" + email + "\", \"nom\": \"" + nom + "\", \"prenom\": \"" + prenom + "\", \"mdp\": \"" + mdp + "\"}";
-		
+
 	}
 	json += "}";
-	return json; 
+	return json;
 }
 
 string ListeJoueurs(char msg[]) {
@@ -148,21 +126,7 @@ string ListeJoueurs(char msg[]) {
 
 	string jsoncomplet = "{\"ListeJoueurs\":";
 
-	try
-	{
-		driver = get_driver_instance();
-		//for demonstration only. never save password in the code!
-		con = driver->connect(server, username, password);
-	}
-
-	catch (sql::SQLException e)
-	{
-		cout << "Could not connect to server. Error message: " << e.what() << endl;
-		system("pause");
-		exit(1);
-	}
-
-	con->setSchema("sensorpong");
+	ConnexionBDD();
 
 	pstmt = con->prepareStatement("SELECT idJoueur, email, nom, prenom, mdp FROM sensorpong.joueur WHERE Entraineur_idEntraineur = ?;");
 
@@ -197,21 +161,7 @@ string HistoriqueComplet(char msg[] ) {
 
 	string jsoncomplet = "{\"HistoriqueComplet\":";
 
-	try
-	{
-		driver = get_driver_instance();
-		//for demonstration only. never save password in the code!
-		con = driver->connect(server, username, password);
-	}
-
-	catch (sql::SQLException e)
-	{
-		cout << "Could not connect to server. Error message: " << e.what() << endl;
-		system("pause");
-		exit(1);
-	}
-
-	con->setSchema("sensorpong");
+	ConnexionBDD();
 
 	pstmt = con->prepareStatement("SELECT nom, prenom, nbrBalle, frequence, vitesse, zone_envoie, zone_retour, taux_de_reussite, Date FROM sensorpong.joueur INNER JOIN sensorpong.partie WHERE Joueur_idJoueur = idJoueur AND partie.Entraineur_idEntraineur = ? ORDER BY Date DESC");
 
@@ -249,24 +199,10 @@ string HistoriqueJoueurC(char msg[]) {
 
 	string jsoncomplet = "{\"HistoriqueCJoueur\":";
 
-	try
-	{
-		driver = get_driver_instance();
-		//for demonstration only. never save password in the code!
-		con = driver->connect(server, username, password);
-	}
-
-	catch (sql::SQLException e)
-	{
-		cout << "Could not connect to server. Error message: " << e.what() << endl;
-		system("pause");
-		exit(1);
-	}
+	ConnexionBDD();
 
 	Document mydoc;
 	mydoc.Parse(msg);
-
-	con->setSchema("sensorpong");
 
 	pstmt = con->prepareStatement("SELECT nom, prenom, nbrBalle, frequence, vitesse, zone_envoie, zone_retour, taux_de_reussite, Date FROM sensorpong.joueur INNER JOIN sensorpong.partie WHERE Joueur_idJoueur = ? && nom = ? && prenom = ? ORDER BY Date DESC;");
 
@@ -310,21 +246,7 @@ string HistoriqueJoueur(char msg[]) {
 
 	string jsoncomplet = "{\"HistoriqueJoueur\":";
 
-	try
-	{
-		driver = get_driver_instance();
-		//for demonstration only. never save password in the code!
-		con = driver->connect(server, username, password);
-	}
-
-	catch (sql::SQLException e)
-	{
-		cout << "Could not connect to server. Error message: " << e.what() << endl;
-		system("pause");
-		exit(1);
-	}
-
-	con->setSchema("sensorpong");
+	ConnexionBDD();
 
 	pstmt = con->prepareStatement("SELECT nom, prenom, nbrBalle, frequence, vitesse, zone_envoie, zone_retour, taux_de_reussite, Date FROM sensorpong.joueur INNER JOIN sensorpong.partie WHERE Joueur_idJoueur = idJoueur AND idJoueur = ? AND zone_envoie = ? AND zone_retour = ? ORDER BY Date DESC LIMIT 10;");
 
@@ -364,21 +286,7 @@ void UpdateUser(char msg[]) {
 	Document mydoc;
 	mydoc.Parse(msg);
 
-	try
-	{
-		driver = get_driver_instance();
-		//for demonstration only. never save password in the code!
-		con = driver->connect(server, username, password);
-	}
-
-	catch (sql::SQLException e)
-	{
-		cout << "Could not connect to server. Error message: " << e.what() << endl;
-		system("pause");
-		exit(1);
-	}
-
-	con->setSchema("sensorpong");
+	ConnexionBDD();
 
 	pstmt = con->prepareStatement("UPDATE sensorpong.joueur SET email = ?, nom = ?, prenom = ?, mdp = ? WHERE idJoueur = ?;");
 
@@ -396,21 +304,7 @@ void DeleteUser(char msg[]) {
 	Document mydoc;
 	mydoc.Parse(msg);
 
-	try
-	{
-		driver = get_driver_instance();
-		//for demonstration only. never save password in the code!
-		con = driver->connect(server, username, password);
-	}
-
-	catch (sql::SQLException e)
-	{
-		cout << "Could not connect to server. Error message: " << e.what() << endl;
-		system("pause");
-		exit(1);
-	}
-
-	con->setSchema("sensorpong");
+	ConnexionBDD();
 
 	pstmt = con->prepareStatement("DELETE sensorpong.joueur, sensorpong.partie FROM sensorpong.joueur INNER JOIN sensorpong.partie ON partie.Joueur_idJoueur = idJoueur WHERE idJoueur = ?;");
 
@@ -430,21 +324,7 @@ string GameStart(char msg[]) {
 	int zone_envoie = mydoc["GameStart"]["zone envoie"].GetInt();
 	int zone_retour = mydoc["GameStart"]["zone retour"].GetInt();
 
-	try
-	{
-		driver = get_driver_instance();
-		//for demonstration only. never save password in the code!
-		con = driver->connect(server, username, password);
-	}
-
-	catch (sql::SQLException e)
-	{
-		cout << "Could not connect to server. Error message: " << e.what() << endl;
-		system("pause");
-		exit(1);
-	}
-
-	con->setSchema("sensorpong");
+	ConnexionBDD();
 
 	pstmt = con->prepareStatement("SELECT frequence,vitesse,MAX(Date) FROM sensorpong.joueur INNER JOIN sensorpong.partie WHERE Joueur_idJoueur = idJoueur AND idJoueur= ?;");
 
@@ -469,21 +349,7 @@ void enregistrerPartie(char msg[]) {
 	Document mydoc;
 	mydoc.Parse(msg);
 
-	try
-	{
-		driver = get_driver_instance();
-		//for demonstration only. never save password in the code!
-		con = driver->connect(server, username, password);
-	}
-
-	catch (sql::SQLException e)
-	{
-		cout << "Could not connect to server. Error message: " << e.what() << endl;
-		system("pause");
-		exit(1);
-	}
-
-	con->setSchema("sensorpong");
+	ConnexionBDD();
 
 	pstmt = con->prepareStatement("INSERT INTO sensorpong.partie(nbrBalle,frequence,vitesse,zone_envoie,zone_retour,taux_de_reussite,Date,Joueur_idJoueur,Entraineur_idEntraineur) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)");
 

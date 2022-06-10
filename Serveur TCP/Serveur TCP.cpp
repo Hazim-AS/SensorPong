@@ -1,68 +1,81 @@
 #include <iostream>
-#include <WS2tcpip.h>
+#include <stdio.h>
+#include <stdlib.h> 
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <string.h> 
+#include <netinet/in.h> 
+#include <unistd.h>
+#include <arpa/inet.h> 
 #include "requete.h"
-
-#pragma comment (lib, "ws2_32.lib")
   
 using namespace std;
 
-void main() {
-	
-	
-#if defined (WIN32)
-	//initialisé winsock
-	WSADATA WSAData;
-	int erreur = WSAStartup(MAKEWORD(2, 2), &WSAData);
-#else
-	int erreur = 0;
-#endif
-
-	if (erreur != 0) {
-		cerr << "Can't Initialize sock ! Quitting" << endl;
-		return;
+int main() {
+	printf("Processus SERVEUR \n \n");
+	int listening;
+	int clientSocket;
+	struct sockaddr_in adress;
+	socklen_t longueurAdresse;
+	// Crée un socket de communication
+	listening = socket(AF_INET, SOCK_STREAM, 0);
+	// Teste la valeur renvoyée par l’appel système socket()
+	if (listening < 0) {
+		perror("socket"); // Affiche le message d’erreur
+		exit(-1); // On sort en indiquant un code erreur
 	}
-
-	//crée une socket
-	SOCKET listening = socket(AF_INET, SOCK_STREAM, 0);
-	if (listening == INVALID_SOCKET)
-	{
-		cerr << "Can't create a socket ! Quitting" << endl;
-		return;
-	}
-
-	//Bind une adresse ip et un numero de port à une socket
-	sockaddr_in adress;
+	printf("Socket créée avec succès ! numeor descripteur socket %d \n", listening);
+	//--- Début de l’étape n°2 :
+	// Obtient la longueur en octets de la structure sockaddr_in
+	longueurAdresse = sizeof(adress);
+	// Initialise à 0 la structure sockaddr_in
+	memset(&adress, 0x00, longueurAdresse);
+	// Renseigne la structure sockaddr_in avec les informations du serveur distant
 	adress.sin_family = AF_INET;
-	adress.sin_port = htons(54000);
-	adress.sin_addr.S_un.S_addr = INADDR_ANY; // Could also use inet_pton
+	// On choisit le numéro de port d’écoute du serveur
+	adress.sin_port = htons(5000); // = 5000
+	// On choisit l’adresse IPv4 du serveur
+	inet_aton("localhost", &adress.sin_addr); // à modifier selon ses besoins
 
-	bind(listening, (sockaddr*)&adress, sizeof(adress));
 
-	//Dire a winsock que la socket est faite pour écouter
-	listen(listening, SOMAXCONN);
+	//bind une adresse
 
-	//Attendre une connection
-	sockaddr_in client;
-	int clientSize = sizeof(client);
-
-	SOCKET clientSocket = accept(listening, (sockaddr*)&client, &clientSize);
-
-	char host[NI_MAXHOST];		//Client's remote name
-	char service[NI_MAXSERV];	//Service (i.e. port) the client is connect on
-
-	memset(host, 0, NI_MAXHOST); //Same as a 
-	memset(service, 0, NI_MAXSERV);
-
-	if (getnameinfo((sockaddr*)&client, sizeof(client), host, NI_MAXHOST, service, NI_MAXSERV, 0) == 0)
+	if (bind(listening, (struct sockaddr*)&adress, longueurAdresse) == -1)
 	{
-		cout << host << " connect on port " << service << endl;
-	}
-	else {
-		inet_ntop(AF_INET, &client.sin_addr, host, NI_MAXHOST);
-		cout << host << "connect on port" << ntohs(client.sin_port) << endl;
+		perror("echec bind \n");
+		close(listening);
+		exit(-1);
 	}
 
+	printf("récupération du port TCP 5000 du serveur OK \n");
 
+	//listen to connection
+	if (listen(listening, 10) == -1)
+	{
+		perror("erreur dans l'écoute listen");
+		close(listening);
+		exit(-1);
+	}
+
+	printf("serveur en écoute \n");
+
+
+	//préparation de la struture pour récupérer l'adresse du client
+	struct sockaddr_in pointRencontreClient;
+	longueurAdresse = sizeof(pointRencontreClient);
+	// Initialise à 0 la structure sockaddr_in pour le client
+	memset(&adress, 0x00, longueurAdresse);
+
+	clientSocket = accept(listening, (struct sockaddr*)&pointRencontreClient, &longueurAdresse);
+
+	if (clientSocket == -1)
+	{
+		perror("echec de l'acceptation");
+		close(listening);
+		exit(-1);
+
+	}
+	printf("Vous etes en connectez avec le client. Envoyezlui des choses ..send et recv !!! \n");
 
 	//boucle while : accepter et echo le message au client
 	while (true)
@@ -73,7 +86,7 @@ void main() {
 		//Attendre que le client envoie des données
 		int bytesReceived = recv(clientSocket, msgRcv, 4096, 0);
 
-		if (bytesReceived == SOCKET_ERROR)
+		if (bytesReceived == -1)
 		{
 			cerr << "Error in recv(). Quitting" << endl;
 			break;
@@ -209,6 +222,7 @@ void main() {
 
 			int size_msg = json.size();
 
+			send(clientSocket, msg, size_msg, 0);
 			
 		}
 
@@ -235,11 +249,9 @@ void main() {
 	}
 
 	//Fermer la socket d'ecoute
-	closesocket(listening);
-
+	close(listening);
 	//supprimer une socket
-	closesocket(clientSocket);
-
-	//fermer winsock
-	WSACleanup();
+	close(clientSocket);
+	
+	return 0;
 }

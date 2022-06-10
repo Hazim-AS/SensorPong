@@ -1,0 +1,144 @@
+# depslib dependency file v1.0
+1654845843 source:/home/pi/Desktop/Serveur TCP/Serveur TCP.cpp
+	<iostream>
+	<stdio.h>
+	<stdlib.h>
+	<sys/types.h>
+	<sys/socket.h>
+	<string.h>
+	<netinet/in.h>
+	<unistd.h>
+	<arpa/inet.h>
+	"requete.h"
+
+1654696154 /home/pi/Desktop/Serveur TCP/requete.h
+
+1654848175 source:/home/pi/Desktop/Serveur TCP/requete.cpp
+	<iostream>
+	"rapidjson/document.h"
+	"cppconn/prepared_statement.h"
+	"cppconn/exception.h"
+	"mysql_connection.h"
+	"cppconn/driver.h"
+
+1653357793 /home/pi/Desktop/Serveur TCP/rapidjson/document.h
+	"reader.h"
+	"internal/meta.h"
+	"internal/strfunc.h"
+	"memorystream.h"
+	"encodedstream.h"
+	<new>
+	<limits>
+	<compare>
+	<iterator>
+	<map>
+
+1653357793 /home/pi/Desktop/Serveur TCP/rapidjson/reader.h
+	"allocators.h"
+	"stream.h"
+	"encodedstream.h"
+	"internal/clzll.h"
+	"internal/meta.h"
+	"internal/stack.h"
+	"internal/strtod.h"
+	<limits>
+	<intrin.h>
+	<nmmintrin.h>
+	<emmintrin.h>
+	<arm_neon.h>
+	<stdexcept>
+	"rapidjson/error/error.h"
+	"rapidjson/reader.h"
+	"error/error.h"
+
+1653357793 /home/pi/Desktop/Serveur TCP/rapidjson/allocators.h
+	"rapidjson.h"
+	"internal/meta.h"
+	<memory>
+	<type_traits>
+
+1653357793 /home/pi/Desktop/Serveur TCP/rapidjson/rapidjson.h
+	<cstdlib>
+	<cstring>
+	"rapidjson/..."
+	<string>
+	"msinttypes/stdint.h"
+	"msinttypes/inttypes.h"
+	<stdint.h>
+	<inttypes.h>
+	<endian.h>
+	"rapidjson/..."
+	<cassert>
+	<utility>
+	<cassert>
+
+1653357793 /home/pi/Desktop/Serveur TCP/rapidjson/msinttypes/stdint.h
+	<stdint.h>
+	<limits.h>
+	<wchar.h>
+
+1653357793 /home/pi/Desktop/Serveur TCP/rapidjson/msinttypes/inttypes.h
+	"stdint.h"
+	<inttypes.h>
+
+1653357793 /home/pi/Desktop/Serveur TCP/rapidjson/internal/meta.h
+	"../rapidjson.h"
+	<type_traits>
+
+1653357793 /home/pi/Desktop/Serveur TCP/rapidjson/stream.h
+	"rapidjson.h"
+	"encodings.h"
+
+1653357793 /home/pi/Desktop/Serveur TCP/rapidjson/encodings.h
+	"rapidjson.h"
+
+1653357793 /home/pi/Desktop/Serveur TCP/rapidjson/encodedstream.h
+	"stream.h"
+	"memorystream.h"
+
+1653357793 /home/pi/Desktop/Serveur TCP/rapidjson/memorystream.h
+	"stream.h"
+
+1653357793 /home/pi/Desktop/Serveur TCP/rapidjson/internal/clzll.h
+	"../rapidjson.h"
+	<intrin.h>
+
+1653357793 /home/pi/Desktop/Serveur TCP/rapidjson/internal/stack.h
+	"../allocators.h"
+	"swap.h"
+	<cstddef>
+
+1653357793 /home/pi/Desktop/Serveur TCP/rapidjson/internal/swap.h
+	"../rapidjson.h"
+
+1653357793 /home/pi/Desktop/Serveur TCP/rapidjson/internal/strtod.h
+	"ieee754.h"
+	"biginteger.h"
+	"diyfp.h"
+	"pow10.h"
+	<climits>
+	<limits>
+
+1653357793 /home/pi/Desktop/Serveur TCP/rapidjson/internal/ieee754.h
+	"../rapidjson.h"
+
+1653357793 /home/pi/Desktop/Serveur TCP/rapidjson/internal/biginteger.h
+	"../rapidjson.h"
+	<intrin.h>
+
+1653357793 /home/pi/Desktop/Serveur TCP/rapidjson/internal/diyfp.h
+	"../rapidjson.h"
+	"clzll.h"
+	<limits>
+	<intrin.h>
+
+1653357793 /home/pi/Desktop/Serveur TCP/rapidjson/internal/pow10.h
+	"../rapidjson.h"
+
+1653357793 /home/pi/Desktop/Serveur TCP/rapidjson/error/error.h
+	"../rapidjson.h"
+
+1653357793 /home/pi/Desktop/Serveur TCP/rapidjson/internal/strfunc.h
+	"../stream.h"
+	<cwchar>
+

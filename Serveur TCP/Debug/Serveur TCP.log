@@ -1,4 +1,0 @@
-﻿  Serveur TCP.cpp
-G:\Travail\GitHub\SensorPong\Serveur TCP\Serveur TCP.cpp(67,13): warning C4326: le type de retour de 'main' doit être 'int' au lieu de 'void'
-G:\Travail\GitHub\SensorPong\Serveur TCP\Serveur TCP.cpp(96,6): warning C4834: abandon de la valeur de retour de la fonction ayant l'attribut 'nodiscard'
-  Serveur TCP.vcxproj -> G:\Travail\GitHub\SensorPong\Serveur TCP\Debug\Serveur TCP.exe
